@@ -1,0 +1,35 @@
+@use "../utils/" as *;
+@use "./variables";
+
+body {
+  font-family: var(--font-family-base);
+  background-color: #fff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  @include hover {
+    color: var(--color-primary);
+  }
+
+  &[class] {
+    text-decoration: none;
+  }
+}
