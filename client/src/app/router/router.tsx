@@ -4,7 +4,7 @@ import { HomePage } from '@pages/Home';
 
 export const router = createBrowserRouter([
 	{
-		path: '/',
+		path: '/EventBuddy',
 		element: <Layout />,
 		children: [
 			{ index: true, element: <HomePage /> }
