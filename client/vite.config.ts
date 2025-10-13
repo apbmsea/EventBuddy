@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
-	plugins: [react()],
+	plugins: [react(),basicSsl()],
+	base: '/EventBuddy/',
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
@@ -26,6 +28,9 @@ export default defineConfig({
 		}
 	},
 	server: {
+		watch: {
+			usePolling: true
+		},
 		host: true,
 		strictPort: true,
 		port: 3000
