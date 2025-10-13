@@ -3,6 +3,7 @@ name: deploy client
 on:
   push:
     branches:
+      - main
       - client
     paths:
       - 'client/**'
