@@ -5,7 +5,6 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
 	plugins: [react(),basicSsl()],
-	base: '/EventBuddy/',
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
