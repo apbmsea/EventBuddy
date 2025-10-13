@@ -1,10 +1,9 @@
-name: deploy client
+name: Deploy Client
 
 on:
   push:
     branches:
       - main
-      - client
     paths:
       - 'client/**'
 
@@ -16,19 +15,19 @@ jobs:
         working-directory: client
 
     steps:
-      - name: checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: install dependencies
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      - name: build
+      - name: Build
         run: npm run build
 
       - name: Deploy to GitHub Pages
