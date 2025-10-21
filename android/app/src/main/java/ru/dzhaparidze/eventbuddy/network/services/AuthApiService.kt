@@ -1,0 +1,35 @@
+package ru.dzhaparidze.eventbuddy.network.services
+
+import android.util.Log
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import ru.dzhaparidze.eventbuddy.network.dto.LoginRequest
+import ru.dzhaparidze.eventbuddy.network.dto.LoginResponse
+import ru.dzhaparidze.eventbuddy.network.dto.SignUpRequest
+import ru.dzhaparidze.eventbuddy.network.dto.SignUpResponse
+
+class AuthApiService(private val client: HttpClient) {
+    suspend fun register(request: SignUpRequest): SignUpResponse {
+        return try {
+            client.post("auth/signup") {
+                setBody(request)
+            }.body<SignUpResponse>()
+        } catch (e: Exception) {
+            Log.e("HTTP Client", "Error: ${e.message}")
+            throw e
+        }
+    }
+
+    suspend fun login(request: LoginRequest): LoginResponse {
+        return try {
+            client.post("/auth/login") {
+                setBody(request)
+            }.body<LoginResponse>()
+        } catch (e: Exception) {
+            Log.e("HTTP Client", "Error: ${e.message}")
+            throw e
+        }
+    }
+}
