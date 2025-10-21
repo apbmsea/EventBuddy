@@ -10,9 +10,11 @@ import io.ktor.client.plugins.defaultRequest
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-private const val BASE_URL = "http://localhost:8080"
+// TODO: switch Ktor client to Retrofit
 
 object HttpClientFactory {
+    const val BASE_URL = "http://localhost:8080"
+
     fun create(): HttpClient {
         return HttpClient(Android) {
             install(ContentNegotiation) {
