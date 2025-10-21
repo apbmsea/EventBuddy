@@ -22,13 +22,16 @@ data class LoginResponse(
 data class SignUpRequest(
     val email: String,
     val password: String,
-    val accountType: AccountType
+    val username: String,
+    val role: String
 )
 
 @Serializable
 data class SignUpResponse(
-    val accessToken: String,
-    val refreshToken: String,
-    val tokenType: String = "Bearer",
-    val expiresIn: Long
+    val id: Long,
+    val uuid: String,
+    val email: String,
+    val username: String,
+    val role: String,
+    val enabled: Boolean
 )
