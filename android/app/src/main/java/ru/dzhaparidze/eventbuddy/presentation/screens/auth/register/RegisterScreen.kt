@@ -1,96 +1,146 @@
 package ru.dzhaparidze.eventbuddy.presentation.screens.auth.register
 
-import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.text.input.*
+import androidx.compose.foundation.shape.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.*
+import androidx.compose.ui.text.input.*
+import androidx.compose.ui.text.style.*
 import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.unit.*
 
 @Composable
 fun RegisterScreen() {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFFFFFFF)),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(modifier = Modifier.background(Color(0xFFEE5151))) {
+        Column {
             Column(
+                modifier = Modifier.padding(40.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                var emailField by remember { mutableStateOf("") }
+                var passField by remember { mutableStateOf("") }
+
                 Text(
                     text = "Здесь начинается ваша\n" + "продуктивность",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
-                
-                Spacer(modifier = Modifier.height(16.dp))
 
-                TextField(
-                    state = rememberTextFieldState(initialText = "Обязательное поле"),
-                    label = {
-                        Text(
-                            text = "Почта",
-                        )
-                    }
-                )
+                Spacer(Modifier.height(16.dp))
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Column {
+                    Text(
+                        text = "Email",
+                        color = Color.Gray,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
 
-                TextField(
-                    state = rememberTextFieldState(initialText = "Обязательное поле"),
-                    label = {
-                        Text(
-                            text = "Пароль",
-                        )
-                    }
-                )
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .fillMaxWidth(),
+                        value = emailField,
+                        onValueChange = { emailField == it },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            unfocusedBorderColor = Color.Gray,
+                            focusedBorderColor = Color.Blue
+                        ),
+                    )
+
+                    Spacer(Modifier.height(16.dp))
+
+                    Text(
+                        text = "Пароль",
+                        color = Color.Gray,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .fillMaxWidth(),
+                        value = passField,
+                        onValueChange = { passField = it },
+                        shape = RoundedCornerShape(8.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            unfocusedBorderColor = Color.Gray,
+                            focusedBorderColor = Color.Blue
+                        ),
+                        visualTransformation = PasswordVisualTransformation()
+                    )
+                }
+
+                Spacer(Modifier.height(16.dp))
 
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.End
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Button(onClick = {}) {
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(6.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF2196F3),
+                            disabledContainerColor = Color.LightGray,
+                            contentColor = Color.White
+                        )
+                    ) {
                         Text("Для себя")
                     }
 
-                    Button(onClick = {}) {
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(6.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.LightGray,
+                            contentColor = Color.Black
+                        )
+                    ) {
                         Text("Для компании")
                     }
                 }
 
-                Button(onClick = {}) {
+                Button(
+                    onClick = {},
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(6.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.LightGray,
+                        contentColor = Color.Black
+                    )
+                ) {
                     Text("Продолжить")
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(Modifier.height(48.dp))
 
                 Text(
                     text = "Продолжая, вы даете согласие на\n" + "сбор, обработку и хранение персональных данных",
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(Modifier.height(16.dp))
 
                 Text(
-                    text = "Уже зарегистрированы? Войти",
-                    textAlign = TextAlign.Center
+                    text = "Уже зарегистрированы? Войти", textAlign = TextAlign.Center
                 )
             }
         }
-
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun RegisterScreenPreview() {
     RegisterScreen()
