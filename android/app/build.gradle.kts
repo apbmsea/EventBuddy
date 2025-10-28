@@ -32,6 +32,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
+        @Suppress("DEPRECATION")
         jvmTarget = "11"
     }
     buildFeatures {
@@ -40,6 +41,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.security.crypto.datastore)
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.ktor.client.core)
     implementation (libs.ktor.client.android)
