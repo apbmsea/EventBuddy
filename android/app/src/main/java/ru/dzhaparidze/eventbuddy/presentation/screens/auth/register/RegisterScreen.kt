@@ -11,9 +11,13 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.*
 import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.unit.*
+import ru.dzhaparidze.eventbuddy.network.services.AuthApiService
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(authApiService: AuthApiService) {
+    val registerViewModel = remember { RegisterViewModel(authApiService) }
+    val registerUiState = registerViewModel.registerState.collectAsState()
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -24,9 +28,6 @@ fun RegisterScreen() {
                 modifier = Modifier.padding(40.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                var emailField by remember { mutableStateOf("") }
-                var passField by remember { mutableStateOf("") }
-
                 Text(
                     text = "Здесь начинается ваша\n" + "продуктивность",
                     style = MaterialTheme.typography.titleLarge,
@@ -38,7 +39,7 @@ fun RegisterScreen() {
 
                 Column {
                     Text(
-                        text = "Email",
+                        text = "Почта",
                         color = Color.Gray,
                         modifier = Modifier.padding(bottom = 12.dp)
                     )
@@ -47,8 +48,8 @@ fun RegisterScreen() {
                         modifier = Modifier
                             .padding(0.dp)
                             .fillMaxWidth(),
-                        value = emailField,
-                        onValueChange = { emailField == it },
+                        value = registerUiState.value.email,
+                        onValueChange = { registerViewModel.onEmailChange(it) },
                         shape = RoundedCornerShape(8.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             unfocusedBorderColor = Color.Gray,
@@ -68,8 +69,8 @@ fun RegisterScreen() {
                         modifier = Modifier
                             .padding(0.dp)
                             .fillMaxWidth(),
-                        value = passField,
-                        onValueChange = { passField = it },
+                        value = registerUiState.value.password,
+                        onValueChange = { registerViewModel.onPassChange(it) },
                         shape = RoundedCornerShape(8.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             unfocusedBorderColor = Color.Gray,
@@ -86,7 +87,7 @@ fun RegisterScreen() {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Button(
-                        onClick = {},
+                        onClick = { registerViewModel.changeRole("individual") },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
@@ -99,7 +100,7 @@ fun RegisterScreen() {
                     }
 
                     Button(
-                        onClick = {},
+                        onClick = { registerViewModel.changeRole("company") },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
@@ -112,7 +113,7 @@ fun RegisterScreen() {
                 }
 
                 Button(
-                    onClick = {},
+                    onClick = { registerViewModel.register() },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(6.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -143,5 +144,5 @@ fun RegisterScreen() {
 @Preview(showBackground = true)
 @Composable
 fun RegisterScreenPreview() {
-    RegisterScreen()
+    RegisterScreen(authApiService = {})
 }
