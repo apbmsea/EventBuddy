@@ -11,11 +11,12 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.*
 import androidx.compose.ui.tooling.preview.*
 import androidx.compose.ui.unit.*
-import ru.dzhaparidze.eventbuddy.network.services.AuthApiService
+import org.koin.androidx.compose.koinViewModel
+import ru.dzhaparidze.eventbuddy.network.dto.Role
 
 @Composable
-fun RegisterScreen(authApiService: AuthApiService) {
-    val registerViewModel = remember { RegisterViewModel(authApiService) }
+fun RegisterScreen() {
+    val registerViewModel: RegisterViewModel = koinViewModel()
     val registerUiState = registerViewModel.registerState.collectAsState()
 
     Column(
@@ -87,25 +88,40 @@ fun RegisterScreen(authApiService: AuthApiService) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Button(
-                        onClick = { registerViewModel.changeRole("individual") },
+                        onClick = { registerViewModel.changeRole(Role.INDIVIDUAL) },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF2196F3),
-                            disabledContainerColor = Color.LightGray,
-                            contentColor = Color.White
+                            containerColor = if (registerUiState.value.role == Role.INDIVIDUAL) {
+                                Color(0xFF2196F3)
+                            } else {
+                                Color.LightGray
+                            },
+                            contentColor = if (registerUiState.value.role == Role.INDIVIDUAL) {
+                                Color.White
+                            } else {
+                                Color.Black
+                            }
                         )
                     ) {
                         Text("Для себя")
                     }
 
                     Button(
-                        onClick = { registerViewModel.changeRole("company") },
+                        onClick = { registerViewModel.changeRole(Role.COMPANY) },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.LightGray,
-                            contentColor = Color.Black
+                            containerColor = if (registerUiState.value.role == Role.COMPANY) {
+                                Color(0xFF2196F3)
+                            } else {
+                                Color.LightGray
+                            },
+                            contentColor = if (registerUiState.value.role == Role.COMPANY) {
+                                Color.White
+                            } else {
+                                Color.Black
+                            }
                         )
                     ) {
                         Text("Для компании")
@@ -144,5 +160,5 @@ fun RegisterScreen(authApiService: AuthApiService) {
 @Preview(showBackground = true)
 @Composable
 fun RegisterScreenPreview() {
-    RegisterScreen(authApiService = {})
+    RegisterScreen()
 }

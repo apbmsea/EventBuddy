@@ -1,11 +1,14 @@
 package ru.dzhaparidze.eventbuddy.presentation.screens.auth.register
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.*
-import ru.dzhaparidze.eventbuddy.network.services.AuthApiService
+import kotlinx.coroutines.launch
+import ru.dzhaparidze.eventbuddy.data.repositories.AuthRepository
+import ru.dzhaparidze.eventbuddy.network.dto.Role
 
 class RegisterViewModel(
-    private val authApiService: AuthApiService
+    private val authRepository: AuthRepository
 ) : ViewModel() {
     val registerState = MutableStateFlow(RegisterUiState())
 
@@ -18,10 +21,14 @@ class RegisterViewModel(
     }
 
     fun register() {
-
+        viewModelScope.launch {
+            with(registerState.value) {
+                authRepository.signup(email, password, role)
+            }
+        }
     }
 
-    fun changeRole(role: String) {
-
+    fun changeRole(role: Role) {
+        registerState.value = registerState.value.copy(role = role)
     }
 }
