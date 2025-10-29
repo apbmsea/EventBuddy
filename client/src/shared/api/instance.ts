@@ -2,7 +2,7 @@ import type { HandledError } from '@shared/types/error.types';
 import axios from 'axios';
 
 export const $api = axios.create({
-	baseURL: import.meta.env.VITE_API_BASE_URL,
+	baseURL: import.meta.env.VITE_SERVER_URL,
 	withCredentials: true,
 	timeout: 10000
 });

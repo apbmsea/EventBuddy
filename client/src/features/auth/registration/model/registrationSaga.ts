@@ -22,6 +22,7 @@ function* registrationSaga(action: PayloadAction<RegistrationPayload>) {
 		if (isHandledError(error)) {
 			yield* put(registrationFailure(error.data.errors));
 		} else {
+			yield* put(registrationFailure({}));
 			console.error('Registration error:', error);
 		}
 	}
