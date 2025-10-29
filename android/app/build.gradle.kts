@@ -38,10 +38,12 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    implementation(libs.timber)
     implementation(libs.ktor.client.android.v237)
     implementation(libs.ktor.client.content.negotiation.v237)
     implementation(libs.ktor.serialization.kotlinx.json)

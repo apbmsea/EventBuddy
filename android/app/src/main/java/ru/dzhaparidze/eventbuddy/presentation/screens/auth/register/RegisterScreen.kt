@@ -19,6 +19,27 @@ fun RegisterScreen() {
     val registerViewModel: RegisterViewModel = koinViewModel()
     val registerUiState = registerViewModel.registerState.collectAsState()
 
+    RegisterScreenContent(
+        email = registerUiState.value.email,
+        password = registerUiState.value.password,
+        role = registerUiState.value.role,
+        onEmailChange = { registerViewModel.onEmailChange(it) },
+        onPassChange = { registerViewModel.onPassChange(it) },
+        onRoleChange = { registerViewModel.changeRole(it) },
+        onRegister = { registerViewModel.register() }
+    )
+}
+
+@Composable
+fun RegisterScreenContent(
+    email: String,
+    password: String,
+    role: Role,
+    onEmailChange: (String) -> Unit,
+    onPassChange: (String) -> Unit,
+    onRoleChange: (Role) -> Unit,
+    onRegister: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -49,8 +70,8 @@ fun RegisterScreen() {
                         modifier = Modifier
                             .padding(0.dp)
                             .fillMaxWidth(),
-                        value = registerUiState.value.email,
-                        onValueChange = { registerViewModel.onEmailChange(it) },
+                        value = email,
+                        onValueChange = onEmailChange,
                         shape = RoundedCornerShape(8.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             unfocusedBorderColor = Color.Gray,
@@ -70,8 +91,8 @@ fun RegisterScreen() {
                         modifier = Modifier
                             .padding(0.dp)
                             .fillMaxWidth(),
-                        value = registerUiState.value.password,
-                        onValueChange = { registerViewModel.onPassChange(it) },
+                        value = password,
+                        onValueChange = onPassChange,
                         shape = RoundedCornerShape(8.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             unfocusedBorderColor = Color.Gray,
@@ -88,16 +109,16 @@ fun RegisterScreen() {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Button(
-                        onClick = { registerViewModel.changeRole(Role.INDIVIDUAL) },
+                        onClick = { onRoleChange(Role.INDIVIDUAL) },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (registerUiState.value.role == Role.INDIVIDUAL) {
+                            containerColor = if (role == Role.INDIVIDUAL) {
                                 Color(0xFF2196F3)
                             } else {
                                 Color.LightGray
                             },
-                            contentColor = if (registerUiState.value.role == Role.INDIVIDUAL) {
+                            contentColor = if (role == Role.INDIVIDUAL) {
                                 Color.White
                             } else {
                                 Color.Black
@@ -108,16 +129,16 @@ fun RegisterScreen() {
                     }
 
                     Button(
-                        onClick = { registerViewModel.changeRole(Role.COMPANY) },
+                        onClick = { onRoleChange(Role.COMPANY) },
                         modifier = Modifier.weight(1f),
                         shape = RoundedCornerShape(6.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = if (registerUiState.value.role == Role.COMPANY) {
+                            containerColor = if (role == Role.COMPANY) {
                                 Color(0xFF2196F3)
                             } else {
                                 Color.LightGray
                             },
-                            contentColor = if (registerUiState.value.role == Role.COMPANY) {
+                            contentColor = if (role == Role.COMPANY) {
                                 Color.White
                             } else {
                                 Color.Black
@@ -129,7 +150,7 @@ fun RegisterScreen() {
                 }
 
                 Button(
-                    onClick = { registerViewModel.register() },
+                    onClick = onRegister,
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(6.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -160,5 +181,15 @@ fun RegisterScreen() {
 @Preview(showBackground = true)
 @Composable
 fun RegisterScreenPreview() {
-    RegisterScreen()
+    MaterialTheme {
+        RegisterScreenContent(
+            email = "test@example.com",
+            password = "password123",
+            role = Role.INDIVIDUAL,
+            onEmailChange = {},
+            onPassChange = {},
+            onRoleChange = {},
+            onRegister = {}
+        )
+    }
 }
