@@ -5,6 +5,9 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.http.contentType
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 import ru.dzhaparidze.eventbuddy.network.dto.LoginRequest
 import ru.dzhaparidze.eventbuddy.network.dto.LoginResponse
 import ru.dzhaparidze.eventbuddy.network.dto.SignUpRequest
@@ -14,6 +17,7 @@ class AuthApiService(private val client: HttpClient) {
     suspend fun register(request: SignUpRequest): SignUpResponse {
         return try {
             client.post("auth/signup") {
+                contentType(ContentType.Application.Json)
                 setBody(request)
             }.body<SignUpResponse>()
         } catch (e: Exception) {

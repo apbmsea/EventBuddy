@@ -25,9 +25,9 @@ class AuthRepository(
         }
     }
 
-    suspend fun signup(email: String, password: String, role: Role): String? {
+    suspend fun signup(email: String, password: String, username: String, role: Role): String? {
         return try {
-            val request = SignUpRequest(email, password, role.name)
+            val request = SignUpRequest(email, password, username, role.name)
             val response = authApiService.register(request)
             response.email
         } catch (e: Exception) {

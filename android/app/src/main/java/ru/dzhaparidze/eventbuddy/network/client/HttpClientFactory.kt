@@ -19,6 +19,7 @@ object HttpClientFactory {
                 json(Json {
                     prettyPrint = true
                     isLenient = true
+                    ignoreUnknownKeys = true
                 })
             }
 

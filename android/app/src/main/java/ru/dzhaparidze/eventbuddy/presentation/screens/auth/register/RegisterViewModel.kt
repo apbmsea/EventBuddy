@@ -23,7 +23,7 @@ class RegisterViewModel(
     fun register() {
         viewModelScope.launch {
             with(registerState.value) {
-                authRepository.signup(email, password, role)
+                authRepository.signup(email, password, username, role)
             }
         }
     }
