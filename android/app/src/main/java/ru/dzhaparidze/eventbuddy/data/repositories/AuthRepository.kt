@@ -5,7 +5,9 @@ import ru.dzhaparidze.eventbuddy.data.datastore.TokenDataStore
 import ru.dzhaparidze.eventbuddy.network.dto.LoginRequest
 import ru.dzhaparidze.eventbuddy.network.dto.Role
 import ru.dzhaparidze.eventbuddy.network.dto.SignUpRequest
+import ru.dzhaparidze.eventbuddy.network.dto.VerifyRequest
 import ru.dzhaparidze.eventbuddy.network.services.AuthApiService
+import timber.log.Timber
 
 class AuthRepository(
     private val authApiService: AuthApiService,
@@ -20,7 +22,7 @@ class AuthRepository(
 
             true
         } catch (e: Exception) {
-            Log.e("AuthRepository", "Login failed: ${e.message}", e)
+            Timber.e(e, "Login failed: ${e.message}")
             false
         }
     }
@@ -31,7 +33,17 @@ class AuthRepository(
             val response = authApiService.register(request)
             response.email
         } catch (e: Exception) {
-            Log.e("AuthRepository", "Signup failed: ${e.message}", e)
+            Timber.e(e, "Signup failed: ${e.message}")
+            null
+        }
+    }
+
+    suspend fun verify(code: String) {
+        try {
+            val request = VerifyRequest(code)
+            val response = authApiService.verify(request)
+        } catch (e: Exception) {
+            Timber.e(e, "Signup failed: ${e.message}")
             null
         }
     }
@@ -40,7 +52,7 @@ class AuthRepository(
         return try {
             false
         } catch (e: Exception) {
-            Log.e("AuthRepository", "Token refresh failed: ${e.message}", e)
+            Timber.e(e, "Token refresh failed: ${e.message}")
             false
         }
     }
@@ -49,7 +61,7 @@ class AuthRepository(
         return try {
             false
         } catch (e: Exception) {
-            Log.e("AuthRepository", "Logout failed: ${e.message}", e)
+            Timber.e(e, "Logout failed: ${e.message}")
             false
         }
     }

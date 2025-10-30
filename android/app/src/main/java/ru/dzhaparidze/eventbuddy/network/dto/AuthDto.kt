@@ -34,3 +34,7 @@ data class SignUpResponse(
     val role: String,
 //    val enabled: Boolean
 )
+
+data class VerifyRequest(
+    val code: String,
+)

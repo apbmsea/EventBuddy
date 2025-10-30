@@ -103,25 +103,30 @@ fun LoginScreenContent(
                     onClick = onLogin,
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(6.dp),
+                    enabled = email.length >= 6 && password.length >= 6,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.LightGray,
-                        contentColor = Color.Black
+                        disabledContainerColor = Color.LightGray,
+                        disabledContentColor = Color.Black,
+                        containerColor = Color(0xFF2196F3),
+                        contentColor = Color.White
                     )
                 ) {
-                    Text("Продолжить")
+                    Text("Войти")
                 }
 
                 Spacer(Modifier.height(48.dp))
 
                 Text(
-                    text = "Продолжая, вы даете согласие на\n" + "сбор, обработку и хранение персональных данных",
-                    textAlign = TextAlign.Center
+                    text = "Нет аккаунта? Зарегестрироваться", textAlign = TextAlign.Center
                 )
 
                 Spacer(Modifier.height(16.dp))
 
                 Text(
-                    text = "Нет аккаунта? Зарегестрироваться", textAlign = TextAlign.Center
+                    text = "Продолжая, вы даете согласие на\nсбор, обработку и хранение персональных данных",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color.Gray,
+                    textAlign = TextAlign.Center
                 )
             }
         }
@@ -134,7 +139,7 @@ fun LoginScreenPreview() {
     MaterialTheme {
         LoginScreenContent(
             email = "test@example.com",
-            password = "password123",
+            password = "123456",
             onEmailChange = {},
             onPassChange = {},
             onLogin = {}
