@@ -13,7 +13,7 @@ function* verifySaga(action: PayloadAction<VerifyPayload>) {
 			loginRequest({
 				email: '',
 				password: '',
-				authToken: response.authToken
+				token: response.token
 			})
 		);
 		yield* put(verifySuccess());

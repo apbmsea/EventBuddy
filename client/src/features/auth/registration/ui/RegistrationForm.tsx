@@ -13,7 +13,7 @@ const RegistrationForm: React.FC = () => {
 	const [formData, setFormData] = useState<RegistrationPayload>({
 		email: '',
 		password: '',
-		role: Role.INDIVIDUAL
+		role: 'INDIVIDUAL'
 	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

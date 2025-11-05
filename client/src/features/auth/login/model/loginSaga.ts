@@ -4,11 +4,17 @@ import type { LoginPayload } from './login.types';
 import { login } from '../api/login.api';
 import { loginFailure, loginRequest, loginSuccess } from './loginSlice';
 import { isHandledError } from '@shared/utils/isHandeledError';
+import { setUser } from '@entities/user';
+import { navigateTo } from '@shared/utils/navigate';
 
 function* loginSaga(action: PayloadAction<LoginPayload>) {
 	try {
-		yield* call(login, action.payload);
+		const response = yield* call(login, action.payload);
+		const { accessToken, user } = response;
+		localStorage.setItem('accessToken', accessToken);
+		yield* put(setUser(user));
 		yield* put(loginSuccess());
+		yield* call(navigateTo, '');
 	} catch (error: unknown) {
 		if (isHandledError(error)) {
 			yield* put(loginFailure(error.data.errors));

@@ -2,12 +2,16 @@ import { $api } from '@shared/api/instance';
 import type { LoginPayload } from '../model/login.types';
 
 export async function login(data: LoginPayload) {
-	if (data.authToken) {
-		const response = await $api.post('/login', null, {
-			params: {
-				token: data.authToken
+	if (data.token) {
+		const response = await $api.post(
+			'/auto-login',
+			{ email: '', password: '' },
+			{
+				params: {
+					token: data.token
+				}
 			}
-		});
+		);
 		return response.data;
 	} else {
 		const response = await $api.post('/login', data);

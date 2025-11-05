@@ -18,7 +18,7 @@ const VerifyForm: React.FC = () => {
 
 		setFormData(prev => ({
 			...prev,
-			[name]: value
+			[name]: value === '' ? 0 : Number(value)
 		}));
 	};
 
@@ -36,10 +36,13 @@ const VerifyForm: React.FC = () => {
 			</p>
 			<input
 				type='number'
-				value={formData.code}
+				name='code'
+				value={formData.code === 0 ? '' : formData.code}
 				onChange={handleChange}
+				placeholder='Введите код'
+				required
 			/>
-			{/* <p>Запросить новый код через 59 сек</p> //добавить таймер */}
+			{/* <p>Запросить новый код через 59 сек</p> // добавить таймер */}
 			<button type='submit'>Продолжить</button>
 		</form>
 	);

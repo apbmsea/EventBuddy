@@ -17,7 +17,7 @@ function* registrationSaga(action: PayloadAction<RegistrationPayload>) {
 		yield* call(registration, action.payload);
 		yield* put(registrationSuccess());
 		yield* put(setVerifyEmail(action.payload.email));
-		yield* call(navigateTo, '/verify');
+		yield* call(navigateTo, '/auth/verify');
 	} catch (error: unknown) {
 		if (isHandledError(error)) {
 			yield* put(registrationFailure(error.data.errors));
