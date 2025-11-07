@@ -5,18 +5,22 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-      "build": "tsc",
-      "dev": "tsc --watch"
+        "build": "tsc",
+        "dev": "tsc --watch"
     },
-    "keywords": ["react", "ui", "components"],
+    "keywords": [
+        "react",
+        "ui",
+        "components"
+    ],
     "author": "Your Name",
     "license": "MIT",
     "peerDependencies": {
-      "react": "^18.0.0",
-      "react-dom": "^18.0.0"
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
     },
     "devDependencies": {
-      "typescript": "^5.0.0",
-      "@types/react": "^18.0.0"
+        "@types/react": "^18.3.26",
+        "typescript": "^5.0.0"
     }
-  }
+}
