@@ -1,0 +1,22 @@
+{
+    "name": "eventbuddy-ui",
+    "version": "1.0.0",
+    "description": "UI Kit for EventBuddy project",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+      "build": "tsc",
+      "dev": "tsc --watch"
+    },
+    "keywords": ["react", "ui", "components"],
+    "author": "Your Name",
+    "license": "MIT",
+    "peerDependencies": {
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0"
+    },
+    "devDependencies": {
+      "typescript": "^5.0.0",
+      "@types/react": "^18.0.0"
+    }
+  }
