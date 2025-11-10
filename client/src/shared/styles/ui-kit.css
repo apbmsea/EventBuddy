@@ -1,0 +1,350 @@
+
+/* CSS переменные */
+:root {
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-background: #ffffff;
+  --color-primary: #1A73E8;
+  --color-secondary: #CCCCCA;
+  --color-error: #CD6565;
+  --color-success: #4CAF50;
+  --color-text-primary: #4C4C4C;
+  --color-text-secondary: #474747;
+  --color-text-muted: #5D5D5D;
+  --font-family-base: 'Unbounded', sans-serif;
+  --font-family-accent: 'Manrope', sans-serif;
+  --font-size-large: 24px;
+  --font-size-medium: 16px;
+  --font-size-small: 12px;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --transition-duration: 0.2s;
+  --border-radius: 5px;
+  
+}
+
+/* Базовые стили компонентов */
+.eventbuddy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-regular);
+    transition: all var(--transition-duration);
+    text-decoration: none;
+    
+    width: 200px;
+    height: 48px;
+    border-radius: 5px;
+    padding: 12px 24px;
+    gap: 8px;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .eventbuddy-button {
+      width: 150px;
+      height: 44px;
+      font-size: 14px;
+    }
+  }
+  
+  .eventbuddy-button--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.08);
+  }
+  
+  .eventbuddy-button--primary:hover:not(:disabled) {
+    background-color: #1557b8;
+  }
+  
+  .eventbuddy-button--primary:active:not(:disabled) {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .eventbuddy-button--secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-muted);
+  }
+  
+  .eventbuddy-button--secondary:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+  
+  .eventbuddy-button--loading {
+    cursor: not-allowed;
+    position: relative;
+  }
+  
+  .eventbuddy-button__spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-white);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .eventbuddy-button:disabled {
+    background-color: var(--color-secondary);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+/* Добавь сюда остальные стили когда заработает */
+
+
+.eventbuddy-code-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .eventbuddy-code-inputs-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .eventbuddy-code-input {
+    width: 50px;
+    height: 60px;
+    border: 2px solid #CCCCCA;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-family: var(--font-family-base);
+    font-size: 20px;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    transition: all var(--transition-duration);
+    outline: none;
+  }
+  
+  @media (max-width: 768px) {
+    .eventbuddy-code-input {
+      width: 40px;
+      height: 50px;
+      font-size: 18px;
+    }
+  }
+  
+  .eventbuddy-code-input:focus {
+    border-color: var(--color-primary);
+  }
+  
+  .eventbuddy-code-input--error {
+    border-color: var(--color-error);
+    background-color: rgba(205, 101, 101, 0.1);
+  }
+  
+  .eventbuddy-code-input--disabled,
+  .eventbuddy-code-input:disabled {
+    border-color: #CCCCCA;
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+  
+  .eventbuddy-code-input-error {
+    font-family: var(--font-family-base);
+    font-size: 12px;
+    color: var(--color-error);
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .eventbuddy-code-input-error {
+      font-size: 11px;
+    }
+  }
+
+
+
+/* Input стили - красивая версия */
+.eventbuddy-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+  
+  .eventbuddy-input-label {
+    font-family: var(--font-family-base);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+  
+  .eventbuddy-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .eventbuddy-input {
+    width: 100%;
+    height: 48px;
+    border: 4px solid #E5E5E5;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-family: var(--font-family-base);
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #FFFFFF;
+    transition: all 0.2s ease;
+    outline: none;
+    color: var(--color-text-primary);
+    box-sizing: border-box;
+  }
+  
+  .eventbuddy-input::placeholder {
+    color: #A0A0A0;
+    font-weight: 400;
+  }
+  
+  .eventbuddy-input:hover {
+    border-color: #CCCCCA;
+  }
+  
+  .eventbuddy-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+  }
+  
+  .eventbuddy-input--error,
+  .eventbuddy-input.eventbuddy-input--error {
+    border-color: var(--color-error);
+    background-color: #FFF5F5;
+  }
+  
+  .eventbuddy-input--error:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(205, 101, 101, 0.1);
+  }
+  
+  .eventbuddy-input--disabled,
+  .eventbuddy-input:disabled {
+    border-color: #F0F0F0;
+    background-color: #F8F8F8;
+    color: #A0A0A0;
+    cursor: not-allowed;
+  }
+  
+  .eventbuddy-input-icon {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    color: #666666;
+  }
+  
+  .eventbuddy-input-icon:hover {
+    background-color: #F5F5F5;
+  }
+  
+  .eventbuddy-input-icon:active {
+    background-color: #EEEEEE;
+  }
+  
+  .eventbuddy-input-icon:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: transparent;
+  }
+  
+  .eventbuddy-input-error {
+    font-family: var(--font-family-base);
+    font-size: 12px;
+    color: var(--color-error);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 768px) {
+    .eventbuddy-input {
+      height: 44px;
+      font-size: 16px; /* На iOS лучше не уменьшать размер шрифта */
+      padding: 0 14px;
+    }
+    
+    .eventbuddy-input-label {
+      font-size: 13px;
+    }
+    
+    .eventbuddy-input-error {
+      font-size: 11px;
+    }
+  }
+
+
+  .eventbuddy-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .eventbuddy-select-label {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-regular);
+  }
+  
+  .eventbuddy-select {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-duration);
+    cursor: pointer;
+  }
+  
+  .eventbuddy-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  
+  .eventbuddy-select--error {
+    border-color: var(--color-error);
+  }
+  
+  .eventbuddy-select--disabled,
+  .eventbuddy-select:disabled {
+    background-color: var(--color-secondary);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .eventbuddy-select-error {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-small);
+    color: var(--color-error);
+  }
