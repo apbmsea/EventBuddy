@@ -1,0 +1,106 @@
+@import '../../../styles/variables.scss';
+
+.eventbuddy-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eventbuddy-input-label {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-input-desktop-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-label);
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-input-mobile-small);
+  }
+}
+
+.eventbuddy-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eventbuddy-input {
+  width: 100%;
+  border: 1px solid;
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-input-desktop-medium);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--color-background);
+  transition: all var(--transition-duration);
+  outline: none;
+
+  width: var(--input-width-desktop);
+  height: var(--input-height-desktop);
+
+  @media (max-width: 768px) {
+    width: var(--input-width-mobile);
+    height: var(--input-height-mobile);
+    font-size: var(--font-size-input-mobile-medium);
+  }
+
+  &--primary {
+    border-color: var(--color-input-inactive);
+    color: var(--color-text-input);
+
+    &:focus {
+      border-color: var(--color-input-active);
+    }
+  }
+
+  &--error {
+    border-color: var(--color-input-error);
+    background-color: var(--color-input-error-bg);
+  }
+
+  &--disabled {
+    border-color: var(--color-input-disabled);
+    background-color: var(--color-input-disabled-bg);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+
+  &:disabled {
+    border-color: var(--color-input-disabled);
+    background-color: var(--color-input-disabled-bg);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+
+  &:focus:not(.eventbuddy-input--error) {
+    border-color: var(--color-input-active);
+  }
+}
+
+.eventbuddy-input-icon {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.eventbuddy-input-error {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-input-desktop-small);
+  color: var(--color-input-error);
+  margin-top: 4px;
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-input-mobile-small);
+  }
+}

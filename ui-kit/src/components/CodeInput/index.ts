@@ -1,1 +1,1 @@
-export { default as CodeInput } from './ui/CodeInput';
+export { default } from './ui/CodeInput';

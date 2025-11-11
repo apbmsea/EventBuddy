@@ -44,8 +44,15 @@ const CodeInput: React.FC<CodeInputProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
-    if (e.key === 'Backspace' && !code[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
+    if (e.key === 'Backspace') {
+      if (!code[index] && index > 0) {
+        inputRefs.current[index - 1]?.focus();
+      } else if (code[index]) {
+        const newCode = [...code];
+        newCode[index] = '';
+        setCode(newCode);
+        onChange?.(newCode.join(''));
+      }
     }
     
     if (e.key === 'ArrowLeft' && index > 0) {

@@ -37,8 +37,18 @@ var CodeInput = function (_a) {
     };
     var handleKeyDown = function (e, index) {
         var _a, _b, _c;
-        if (e.key === 'Backspace' && !code[index] && index > 0) {
-            (_a = inputRefs.current[index - 1]) === null || _a === void 0 ? void 0 : _a.focus();
+        if (e.key === 'Backspace') {
+            if (!code[index] && index > 0) {
+                // Если текущий инпут пустой - переходим к предыдущему
+                (_a = inputRefs.current[index - 1]) === null || _a === void 0 ? void 0 : _a.focus();
+            }
+            else if (code[index]) {
+                // Если в текущем инпуте есть цифра - очищаем его
+                var newCode = __spreadArray([], code, true);
+                newCode[index] = '';
+                setCode(newCode);
+                onChange === null || onChange === void 0 ? void 0 : onChange(newCode.join(''));
+            }
         }
         if (e.key === 'ArrowLeft' && index > 0) {
             (_b = inputRefs.current[index - 1]) === null || _b === void 0 ? void 0 : _b.focus();
