@@ -41,7 +41,6 @@ const RegistrationForm: React.FC = () => {
 
 	return (
 		<div className={style['registration-page']}>
-		  {/* Заголовок ОТДЕЛЬНО сверху по центру */}
 		  <div className={style['header-section']}>
 			<h1 className={style.title}>Здесь начинается ваша продуктивность</h1>
 			<p className={style.subtitle}>
@@ -50,12 +49,9 @@ const RegistrationForm: React.FC = () => {
 			</p>
 		  </div>
 	  
-		  {/* Контент - два блока под заголовком */}
 		  <div className={style['content-section']}>
-			{/* Левая часть - форма */}
 			<div className={style['form-section']}>
 			  <form onSubmit={handleSubmit} className={style.form}>
-				{/* Email */}
 				<Input
 				  label="Email"
 				  name="email"
@@ -64,11 +60,9 @@ const RegistrationForm: React.FC = () => {
 				  onChange={handleChange}
 				  placeholder="Email обязательное поле"
 				  autoComplete="email"
-				//   className={style.input}
 				  required
 				/>
 	  
-				{/* Пароль */}
 				<Input
 				  label="Пароль"
 				  name="password"
@@ -77,32 +71,29 @@ const RegistrationForm: React.FC = () => {
 				  onChange={handleChange}
 				  placeholder="Пароль обязательное поле"
 				  autoComplete="new-password"
-				//   className={style.input}
 				  required
 				/>
 	  
-<div className={style.accountType}>
-  <div className={style.accountTypeButtons}>
-    <Button
-      type="button"
-      variant={formData.role === Role.INDIVIDUAL ? 'primary' : 'secondary'}
-      onClick={() => handleRoleChange(Role.INDIVIDUAL)}
-      className={style.roleButton}
-    >
-      Для себя
-    </Button>
-    <Button
-      type="button"
-      variant={formData.role === Role.COMPANY ? 'primary' : 'secondary'}
-      onClick={() => handleRoleChange(Role.COMPANY)}
-      className={style.roleButton}
-    >
-      Для компании
-    </Button>
-  </div>
-</div>
-	  
-				{/* Кнопка регистрации */}
+                 <div className={style.accountType}>
+                    <div className={style.accountTypeButtons}>
+                  <Button
+                    type="button"
+                    variant={formData.role === Role.INDIVIDUAL ? 'primary' : 'secondary'}
+                    onClick={() => handleRoleChange(Role.INDIVIDUAL)}
+                    className={style.roleButton}
+                   >
+                    Для себя
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={formData.role === Role.COMPANY ? 'primary' : 'secondary'}
+                    onClick={() => handleRoleChange(Role.COMPANY)}
+                    className={style.roleButton}
+                   >
+                    Для компании
+                  </Button>
+                </div>
+             </div>
 				<Button 
 				  variant="primary" 
 				  type="submit"

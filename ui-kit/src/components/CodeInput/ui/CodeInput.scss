@@ -17,14 +17,14 @@
   height: 60px;
   border: 2px solid var(--color-input-inactive);
   border-radius: var(--button-border-radius);
-  background-color: #686868; /* Серый фон */
+  background-color: #686868; 
   font-family: var(--font-family-base);
   font-size: var(--font-size-input-desktop-large);
-  font-weight: 800; /* Очень жирный */
+  font-weight: 800; 
   text-align: center;
   transition: all var(--transition-duration);
   outline: none;
-  color: var(--color-text-primary); /* Темный цвет текста */
+  color: var(--color-text-primary);
 
   @media (max-width: 768px) {
     width: 40px;
@@ -34,7 +34,7 @@
 
   &:focus {
     border-color: var(--color-input-active);
-    background-color: #eeeeee; /* Чуть темнее при фокусе */
+    background-color: #eeeeee;
   }
 
   &--error {

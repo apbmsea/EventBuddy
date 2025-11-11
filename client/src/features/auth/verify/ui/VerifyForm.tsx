@@ -8,7 +8,7 @@ import './VerifyForm.scss';
 
 const VerifyForm: React.FC = () => {
   const dispatch = useDispatch();
-  const { verifyEmail, isLoading } = useSelector((state: RootState) => state.verify); // Добавляем isLoading из стора
+  const { verifyEmail, isLoading } = useSelector((state: RootState) => state.verify);
 
   const [code, setCode] = useState<string>('');
   const [timer, setTimer] = useState(59);
@@ -29,7 +29,7 @@ const VerifyForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (code.length === 6 && !isLoading) { // Проверяем что не в процессе загрузки
+    if (code.length === 6 && !isLoading) {
       const formData: VerifyPayload = {
         email: verifyEmail,
         code: Number(code)
@@ -39,10 +39,9 @@ const VerifyForm: React.FC = () => {
   };
 
   const handleResendCode = () => {
-    if (isLoading) return; // Не позволяем отправлять повторно во время загрузки
+    if (isLoading) return;
     setTimer(59);
     setCanResend(false);
-    // Здесь будет логика повторной отправки кода
     console.log('Запрос на повторную отправку кода');
   };
 
@@ -61,7 +60,7 @@ const VerifyForm: React.FC = () => {
             <CodeInput
               length={6}
               onChange={handleCodeChange}
-              disabled={isLoading} // Блокируем ввод во время загрузки
+              disabled={isLoading}
             />
           </div>
 
@@ -75,7 +74,7 @@ const VerifyForm: React.FC = () => {
                 type="button"
                 className="verify-resend-btn"
                 onClick={handleResendCode}
-                disabled={isLoading} // Блокируем кнопку во время загрузки
+                disabled={isLoading}
               >
                 Запросить код заново
               </button>
@@ -86,8 +85,8 @@ const VerifyForm: React.FC = () => {
             variant="primary"
             type="submit"
             className="verify-submit-btn"
-            disabled={code.length !== 6 || isLoading} // Блокируем если не полный код или идет загрузка
-            loading={isLoading} // Добавляем спиннер загрузки
+            disabled={code.length !== 6 || isLoading}
+            loading={isLoading}
           >
             Продолжить
           </Button>

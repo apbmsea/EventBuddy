@@ -54,7 +54,6 @@
   .input {
     width: 100%;
     
-    /* Увеличиваем инпуты */
     :global(.eventbuddy-input) {
       height: 56px;
       font-size: 16px;
@@ -96,7 +95,6 @@
   .roleButton {
     flex: 1;
     
-    /* Убираем стандартные отступы если нужно */
     :global(.eventbuddy-button) {
       width: 100%;
     }
@@ -105,7 +103,6 @@
   .submitButton {
     width: 100%;
     margin-top: 16px;
-    /* Убираем кастомные height/font-size чтобы не ломать спиннер */
   }
   
   .agreement {

@@ -85,7 +85,6 @@
   .verify-submit-btn {
     width: 100%;
     
-    /* Увеличиваем кнопку как в регистрации */
     :global(.eventbuddy-button) {
       height: 56px;
       font-size: 18px;
@@ -94,7 +93,6 @@
     }
   }
   
-  // Мобильная адаптация
   @media (max-width: 480px) {
     .verify-page {
       padding: 40px 20px;

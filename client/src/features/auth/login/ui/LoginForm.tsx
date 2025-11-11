@@ -31,7 +31,6 @@ const LoginForm = () => {
 
 	return (
 		<div className={style['login-page']}>
-			{/* Заголовок ОТДЕЛЬНО сверху по центру */}
 			<div className={style['header-section']}>
 				<h1 className={style.title}>С возвращением!</h1>
 				<p className={style.subtitle}>
@@ -40,12 +39,9 @@ const LoginForm = () => {
 				</p>
 			</div>
 	  
-			{/* Контент - два блока под заголовком */}
 			<div className={style['content-section']}>
-				{/* Левая часть - форма */}
 				<div className={style['form-section']}>
 					<form onSubmit={handleSubmit} className={style.form}>
-						{/* Email */}
 						<Input
 				  label="Email"
 				  name="email"
@@ -57,8 +53,7 @@ const LoginForm = () => {
 				  className={style.input}
 							required
 						/>
-		  
-						{/* Пароль */}
+		
 						<Input
 							label="Пароль"
 							name="password"
@@ -71,7 +66,6 @@ const LoginForm = () => {
 							required
 						/>
 		  
-						{/* Кнопка входа */}
 						<Button 
 							variant="primary" 
 							type="submit"
@@ -82,13 +76,11 @@ const LoginForm = () => {
 							Продолжить
 						</Button>
 		  
-						{/* Соглашение */}
 						<p className={style.agreement}>
 							Продолжая, вы даете согласие на{' '}
 							<span>сбор, обработку и хранение персональных данных</span>
 						</p>
 		  
-						{/* Ссылка на регистрацию */}
 						<div className={style.registrationLink}>
 							Нет аккаунта?{' '}
 							<Link to="/auth/registration" className={style.link}>
@@ -98,7 +90,6 @@ const LoginForm = () => {
 					</form>
 				</div>
 		  
-				{/* Правая часть - картинка */}
 				<div className={style['image-section']}>
 			  <div className={style.imageContainer}>
 				<img 
