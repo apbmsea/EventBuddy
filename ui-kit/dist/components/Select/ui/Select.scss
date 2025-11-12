@@ -1,0 +1,49 @@
+.eventbuddy-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .eventbuddy-select-label {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-regular);
+  }
+  
+  .eventbuddy-select {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid var(--color-secondary);
+    border-radius: var(--border-radius);
+    background-color: var(--color-white);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-duration);
+    cursor: pointer;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    
+    &--error {
+      border-color: var(--color-error);
+    }
+    
+    &--disabled {
+      background-color: var(--color-secondary);
+      color: var(--color-text-muted);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  
+  .eventbuddy-select-error {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-small);
+    color: var(--color-error);
+  }

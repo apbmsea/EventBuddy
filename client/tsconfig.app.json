@@ -14,7 +14,9 @@
 			"@features/*": ["src/features/*"],
 			"@pages/*": ["src/pages/*"],
 			"@shared/*": ["src/shared/*"],
-			"@widgets/*": ["src/widgets/*"]
+			"@widgets/*": ["src/widgets/*"],
+			"eventbuddy-ui": ["../ui-kit/src"],
+			"eventbuddy-ui/*": ["../ui-kit/src/*"]
 		},
 
 		/* Bundler mode */

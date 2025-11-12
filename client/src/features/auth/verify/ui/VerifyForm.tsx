@@ -1,51 +1,99 @@
 import type { RootState } from '@shared/types/store.types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyRequest } from '../model/verifySlice';
 import type { VerifyPayload } from '../model/verify.types';
+import { CodeInput, Button } from 'eventbuddy-ui';
+import './VerifyForm.scss';
 
 const VerifyForm: React.FC = () => {
-	const dispatch = useDispatch();
-	const { verifyEmail } = useSelector((state: RootState) => state.verify);
+  const dispatch = useDispatch();
+  const { verifyEmail, isLoading } = useSelector((state: RootState) => state.verify);
 
-	const [formData, setFormData] = useState<VerifyPayload>({
-		email: verifyEmail,
-		code: 0
-	});
+  const [code, setCode] = useState<string>('');
+  const [timer, setTimer] = useState(59);
+  const [canResend, setCanResend] = useState(false);
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value } = e.target;
+  useEffect(() => {
+    if (timer > 0) {
+      const countdown = setTimeout(() => setTimer(timer - 1), 1000);
+      return () => clearTimeout(countdown);
+    } else {
+      setCanResend(true);
+    }
+  }, [timer]);
 
-		setFormData(prev => ({
-			...prev,
-			[name]: value === '' ? 0 : Number(value)
-		}));
-	};
+  const handleCodeChange = (newCode: string) => {
+    setCode(newCode);
+  };
 
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		dispatch(verifyRequest(formData));
-	};
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (code.length === 6 && !isLoading) {
+      const formData: VerifyPayload = {
+        email: verifyEmail,
+        code: Number(code)
+      };
+      dispatch(verifyRequest(formData));
+    }
+  };
 
-	return (
-		<form onSubmit={handleSubmit}>
-			<h2>Подтверждение почты</h2>
-			<p>
-				Отправили код
-				<br /> на адрес <span>{formData.email}</span>
-			</p>
-			<input
-				type='number'
-				name='code'
-				value={formData.code === 0 ? '' : formData.code}
-				onChange={handleChange}
-				placeholder='Введите код'
-				required
-			/>
-			{/* <p>Запросить новый код через 59 сек</p> // добавить таймер */}
-			<button type='submit'>Продолжить</button>
-		</form>
-	);
+  const handleResendCode = () => {
+    if (isLoading) return;
+    setTimer(59);
+    setCanResend(false);
+    console.log('Запрос на повторную отправку кода');
+  };
+
+  return (
+    <div className="verify-page">
+      <div className="verify-content">
+        <h1 className="verify-title">Подтверждение почты</h1>
+        
+        <div className="verify-text">
+          <p>Отправили код</p>
+          <p className="verify-email">На адрес {verifyEmail}</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="verify-form">
+          <div className="verify-code-input">
+            <CodeInput
+              length={6}
+              onChange={handleCodeChange}
+              disabled={isLoading}
+            />
+          </div>
+
+          <div className="verify-timer">
+            {!canResend ? (
+              <span className="verify-timer-text">
+                Запросить новый код через {timer} сек
+              </span>
+            ) : (
+              <button 
+                type="button"
+                className="verify-resend-btn"
+                onClick={handleResendCode}
+                disabled={isLoading}
+              >
+                Запросить код заново
+              </button>
+            )}
+          </div>
+
+          <Button 
+            variant="primary"
+            type="submit"
+            className="verify-submit-btn"
+            disabled={code.length !== 6 || isLoading}
+            loading={isLoading}
+          >
+            Продолжить
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default VerifyForm;

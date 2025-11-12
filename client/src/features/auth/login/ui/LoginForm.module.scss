@@ -1,0 +1,139 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 80px 40px 60px;
+  }
+  
+  .header-section {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  
+  .title {
+    font-family: var(--font-family-base);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    font-family: var(--font-family-base);
+    font-size: 18px;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .content-section {
+    display: flex;
+    flex: 1;
+    gap: 80px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .form-section {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .input {
+    width: 100%;
+    
+    :global(.eventbuddy-input) {
+      height: 56px;
+      font-size: 16px;
+      padding: 0 20px;
+    }
+    
+    :global(.eventbuddy-input-label) {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+  }
+  
+  .submitButton {
+    width: 100%;
+    margin-top: 16px;
+    
+    :global(.eventbuddy-button) {
+      height: 56px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  
+  .agreement {
+    font-family: var(--font-family-base);
+    font-size: 14px;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.4;
+    margin: 20px 0 0;
+  
+    span {
+      color: var(--color-primary);
+      cursor: pointer;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .registrationLink {
+    text-align: center;
+    font-family: var(--font-family-base);
+    font-size: 16px;
+    color: var(--color-text-muted);
+    margin-top: 24px;
+  }
+  
+  .link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .image-section {
+    flex: 1;
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+  
+  .imageContainer {
+    width: 100%;
+  }
+  
+  .image {
+    margin-left: 150px;
+    width: 100%;
+    height: 500px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }

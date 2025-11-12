@@ -1,0 +1,28 @@
+{
+    "name": "eventbuddy-ui",
+    "version": "1.0.0",
+    "description": "UI Kit for EventBuddy project",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc && npm run copy-styles",
+        "copy-styles": "copyfiles -u 1 \"src/**/*.scss\" dist/",
+        "dev": "tsc --watch"
+    },
+    "keywords": [
+        "react",
+        "ui",
+        "components"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "peerDependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.26",
+        "copyfiles": "^2.4.1",
+        "typescript": "^5.0.0"
+    }
+}
