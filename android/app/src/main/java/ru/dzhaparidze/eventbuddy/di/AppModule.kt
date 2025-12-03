@@ -13,6 +13,7 @@ import ru.dzhaparidze.eventbuddy.network.services.AuthApiService
 import ru.dzhaparidze.eventbuddy.presentation.screens.auth.login.LoginViewModel
 import ru.dzhaparidze.eventbuddy.presentation.screens.auth.register.RegisterViewModel
 import ru.dzhaparidze.eventbuddy.presentation.screens.auth.verifyEmail.VerifyViewModel
+import ru.dzhaparidze.eventbuddy.presentation.screens.projects.ProjectsViewModel
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "event_buddy_prefs")
 
@@ -25,4 +26,5 @@ val appModule = module {
     viewModel { RegisterViewModel(authRepository = get()) }
     viewModel { LoginViewModel(authRepository = get()) }
     viewModel { VerifyViewModel(authRepository = get()) }
+    viewModel { ProjectsViewModel() }
 }
