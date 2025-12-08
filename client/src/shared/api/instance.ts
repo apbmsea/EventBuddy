@@ -48,7 +48,7 @@ $api.interceptors.response.use(
 			case 401:
 				if (!originalRequest._isRetry) {
 					originalRequest._isRetry = true;
-					console.log('refresh');
+					console.log('refresh'); //добавить рефреш
 				}
 				break;
 
