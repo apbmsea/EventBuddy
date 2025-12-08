@@ -11,7 +11,6 @@ export const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: 'auth/*', element: <AuthPage /> }
-			//   { path: '*', element: <NotFound /> }, редирект при неправильном url
 		]
 	}
 ]);

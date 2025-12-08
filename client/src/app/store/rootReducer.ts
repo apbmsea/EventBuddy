@@ -9,7 +9,6 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
 	user: userReducer,
-
 	login: loginReducer,
 	registration: registrationReducer,
 	verify: verifyReducer,

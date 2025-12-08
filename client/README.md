@@ -1,1 +1,0 @@
-event-buddy-client@0.0.1

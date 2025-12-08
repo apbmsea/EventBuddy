@@ -13,18 +13,7 @@ export default defineConfig({
 			'@features': path.resolve(__dirname, 'src/features'),
 			'@pages': path.resolve(__dirname, 'src/pages'),
 			'@shared': path.resolve(__dirname, 'src/shared'),
-			'@widgets': path.resolve(__dirname, 'src/widgets'),
-			'eventbuddy-ui': path.resolve(__dirname, '../ui-kit/src')
-		}
-	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: `
-					@use "@/shared/styles/base/variables" as *;
-					@use "@/shared/styles/utils/" as *;
-				`
-			}
+			'@widgets': path.resolve(__dirname, 'src/widgets')
 		}
 	},
 	server: {
