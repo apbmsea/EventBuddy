@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ES2020",
+
+    "esModuleInterop": true,
+    "allowJs": true,
+
+    "verbatimModuleSyntax": false
+  }
+}
