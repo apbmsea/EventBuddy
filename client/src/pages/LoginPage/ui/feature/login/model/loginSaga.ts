@@ -20,7 +20,7 @@ function* loginSaga(action: PayloadAction<LoginPayload>) {
 			yield* put(loginFailure(error.data.errors));
 		} else {
 			yield* put(
-				loginFailure({ mes: "ss"})
+				loginFailure({})
 			);
 			console.error('Login error:', error);
 		}
