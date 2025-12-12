@@ -15,6 +15,8 @@ const LoginForm = () => {
 		'login'
 	);
 
+	const test = 'test'
+
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		dispatch(loginRequest(values));
