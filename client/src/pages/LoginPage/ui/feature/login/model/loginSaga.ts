@@ -7,7 +7,7 @@ import { isHandledError } from '@shared/utils/isHandeledError';
 import { setUser } from '@entities/user';
 import { navigateTo } from '@shared/utils/navigate';
 
-function* loginSaga(action: PayloadAction<LoginPayload>) {
+export function* loginSaga(action: PayloadAction<LoginPayload>) {
 	try {
 		const response = yield* call(login, action.payload);
 		const { accessToken, user } = response;
@@ -17,7 +17,7 @@ function* loginSaga(action: PayloadAction<LoginPayload>) {
 		yield* call(navigateTo, '');
 	} catch (error: unknown) {
 		if (isHandledError(error)) {
-			yield* put(loginFailure(error.data.errors));
+			yield* put(loginFailure(error.data?.errors || {}));
 		} else {
 			yield* put(
 				loginFailure({})
