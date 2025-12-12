@@ -11,14 +11,14 @@ import {
 import { isHandledError } from '@shared/utils/isHandeledError';
 import { navigateTo } from '@shared/utils/navigate';
 
-function* registrationSaga(action: PayloadAction<RegistrationPayload>) {
+export function* registrationSaga(action: PayloadAction<RegistrationPayload>) {
 	try {
 		yield* call(registration, action.payload);
 		yield* put(registrationSuccess());
 		yield* call(navigateTo, '/auth/verify');
 	} catch (error: unknown) {
 		if (isHandledError(error)) {
-			yield* put(registrationFailure(error.data.errors));
+			yield* put(registrationFailure(error.data?.errors || {}));
 		} else {
 			yield* put(registrationFailure({}));
 			console.error('Registration error:', error);
