@@ -7,8 +7,20 @@
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"type-check": "tsc --noEmit",
 		"preview": "vite preview",
-		"test": "jest"
+		"test": "jest",
+		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"eslint . --fix --no-cashe --max-warnings=0",
+			"prettier --write"
+		],
+		"*.{json,md,css,scss}": [
+			"prettier --write"
+		]
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.9.0",
@@ -34,8 +46,10 @@
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"eslint-plugin-react-refresh": "^0.4.22",
 		"globals": "^16.4.0",
+		"husky": "^9.1.7",
 		"jest": "^30.2.0",
 		"jest-environment-jsdom": "^30.2.0",
+		"lint-staged": "^16.2.7",
 		"prettier": "^3.6.2",
 		"sass": "^1.93.2",
 		"ts-jest": "^29.4.6",
