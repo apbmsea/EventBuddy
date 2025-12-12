@@ -30,10 +30,16 @@ const registrationSlice = createSlice({
 		) => {
 			state.isLoading = false;
 			state.errors = action.payload;
+		},
+		clearFieldError: (state, action: PayloadAction<string>) => {
+			delete state.errors[action.payload];
+		},
+		clearAllErrors: state => {
+			state.errors = {};
 		}
 	}
 });
 
-export const { registrationSuccess, registrationRequest, registrationFailure } =
+export const { registrationSuccess, registrationRequest, registrationFailure, clearFieldError, clearAllErrors } =
 	registrationSlice.actions;
 export default registrationSlice.reducer;
