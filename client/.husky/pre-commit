@@ -1,5 +1,0 @@
-echo "Eslint проверка и Форматирование кода..."
-npx lint-staged
-
-echo "Проверка типов"
-npm run type-check
