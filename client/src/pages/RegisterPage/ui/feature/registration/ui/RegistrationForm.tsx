@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
+import React from 'react';
+import { useAppDispatch } from '@shared/hooks/store.hooks';
+import { useForm } from '@shared/hooks/useForm';
 import { registrationRequest } from '../model/registrationSlice';
-import { type RegistrationPayload } from '@pages/RegisterPage/ui/entities/registration';
 import { Role } from '@shared/types/role.types';
 import { Link } from 'react-router-dom';
 
 const RegistrationForm: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const { isLoading } = useAppSelector(state => state.registration);
 
-	const [formData, setFormData] = useState<RegistrationPayload>({
-		email: '',
-		password: '',
-		role: 'INDIVIDUAL'
-	});
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value, type, checked } = e.target;
-		setFormData(prev => ({
-			...prev,
-			[name]: type === 'checkbox' ? checked : value
-		}));
-	};
+	const { values, handleChange, isLoading, errors, hasErrors } = useForm(
+		{
+			email: '',
+			password: '',
+			role: Role.INDIVIDUAL
+		},
+		'registration'
+	);
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		dispatch(registrationRequest(formData));
+		dispatch(registrationRequest(values));
 	};
 
 	return (
@@ -32,29 +26,31 @@ const RegistrationForm: React.FC = () => {
 			<input
 				name='email'
 				type='email'
-				value={formData.email}
+				value={values.email}
 				onChange={handleChange}
 				placeholder='Email обязательное поле'
 				autoComplete='email'
 				required
 			/>
+			{errors.email && <span>{errors.email}</span>}
 
 			<input
 				name='password'
 				type='password'
-				value={formData.password}
+				value={values.password}
 				onChange={handleChange}
 				placeholder='Пароль обязательное поле'
 				autoComplete='new-password'
 				required
 			/>
+			{errors.password && <span>{errors.password}</span>}
 
 			<label>
 				<input
 					type='radio'
 					name='role'
 					value={Role.INDIVIDUAL}
-					checked={formData.role === Role.INDIVIDUAL}
+					checked={values.role === Role.INDIVIDUAL}
 					onChange={handleChange}
 				/>
 				<span>{Role.INDIVIDUAL}</span>
@@ -64,13 +60,14 @@ const RegistrationForm: React.FC = () => {
 					type='radio'
 					name='role'
 					value={Role.COMPANY}
-					checked={formData.role === Role.COMPANY}
+					checked={values.role === Role.COMPANY}
 					onChange={handleChange}
 				/>
 				<span>{Role.COMPANY}</span>
 			</label>
+			{errors.role && <span>{errors.role}</span>}
 
-			<button type='submit' disabled={isLoading}>
+			<button type='submit' disabled={isLoading || hasErrors}>
 				Продолжить
 			</button>
 
