@@ -1,3 +1,4 @@
+import { watchLogout } from '@features/logout';
 import { watchRefresh } from '@features/refresh';
 import { watchLogin } from '@pages/LoginPage/ui/feature/login';
 import { watchRecovery } from '@pages/RecoveryPage/ui/feature/recovery';
@@ -11,6 +12,7 @@ export default function* rootSaga() {
 		watchRegistration(),
 		watchVerify(),
 		watchRecovery(),
-		watchRefresh()
+		watchRefresh(),
+		watchLogout()
 	]);
 }
