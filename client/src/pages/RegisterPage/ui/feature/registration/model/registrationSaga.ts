@@ -10,11 +10,13 @@ import {
 } from './registrationSlice';
 import { isHandledError } from '@shared/utils/isHandeledError';
 import { navigateTo } from '@shared/utils/navigate';
+import { setVerifyEmail } from '@pages/VerifyPage/ui/feature/verify/model/verifySlice';
 
 export function* registrationSaga(action: PayloadAction<RegistrationPayload>) {
 	try {
 		yield* call(registration, action.payload);
 		yield* put(registrationSuccess());
+		yield* put(setVerifyEmail(action.payload.email));
 		yield* call(navigateTo, '/auth/verify');
 	} catch (error: unknown) {
 		if (isHandledError(error)) {
