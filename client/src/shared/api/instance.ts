@@ -1,5 +1,7 @@
 import type { HandledError } from '@shared/types/error.types';
 import axios from 'axios';
+import { store } from '@app/store/store';
+import { refreshRequest } from '@features/refresh/model/refreshSlice';
 
 export const $api = axios.create({
 	baseURL: import.meta.env.VITE_SERVER_URL,
@@ -44,11 +46,11 @@ $api.interceptors.response.use(
 		switch (handledError.status) {
 			case 400:
 				return Promise.reject(handledError);
-				
+
 			case 401:
 				if (!originalRequest._isRetry) {
 					originalRequest._isRetry = true;
-					console.log('refresh'); //добавить рефреш
+					await store.dispatch(refreshRequest());
 				}
 				break;
 

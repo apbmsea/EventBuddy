@@ -1,4 +1,5 @@
 import { userReducer } from '@entities/user';
+import { refreshReducer } from '@features/refresh';
 import { loginReducer } from '@pages/LoginPage/ui/feature/login';
 import { recoveryReducer } from '@pages/RecoveryPage/ui/feature/recovery';
 import { registrationReducer } from '@pages/RegisterPage/ui/feature/registration';
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
 	login: loginReducer,
 	registration: registrationReducer,
 	verify: verifyReducer,
-	recovery: recoveryReducer
+	recovery: recoveryReducer,
+	refresh: refreshReducer
 });
 
 export default rootReducer;
