@@ -3,6 +3,7 @@ import Layout from '@app/Layout';
 import { HomePage } from '@pages/Home';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegisterPage';
+import { VerifyPage } from '@pages/VerifyPage';
 
 export const router = createBrowserRouter([
 	{
@@ -11,7 +12,8 @@ export const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: '/auth/login', element: <LoginPage /> },
-			{ path: '/auth/regitstration', element: <RegistrationPage /> }
+			{ path: '/auth/regitstration', element: <RegistrationPage /> },
+			{ path: '/auth/verify', element: <VerifyPage /> }
 		]
 	}
 ]);

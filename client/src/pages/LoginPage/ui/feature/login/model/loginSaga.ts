@@ -6,6 +6,7 @@ import { loginFailure, loginRequest, loginSuccess } from './loginSlice';
 import { isHandledError } from '@shared/utils/isHandeledError';
 import { setUser } from '@entities/user';
 import { navigateTo } from '@shared/utils/navigate';
+import { setVerifyEmail } from '@pages/VerifyPage/ui/feature/verify/model/verifySlice';
 
 export function* loginSaga(action: PayloadAction<LoginPayload>) {
 	try {
@@ -14,14 +15,13 @@ export function* loginSaga(action: PayloadAction<LoginPayload>) {
 		localStorage.setItem('accessToken', accessToken);
 		yield* put(setUser(user));
 		yield* put(loginSuccess());
+		yield* put(setVerifyEmail(action.payload.email));
 		yield* call(navigateTo, '');
 	} catch (error: unknown) {
 		if (isHandledError(error)) {
 			yield* put(loginFailure(error.data?.errors || {}));
 		} else {
-			yield* put(
-				loginFailure({})
-			);
+			yield* put(loginFailure({}));
 			console.error('Login error:', error);
 		}
 	}
