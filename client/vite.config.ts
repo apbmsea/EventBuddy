@@ -16,16 +16,6 @@ export default defineConfig({
 			'@widgets': path.resolve(__dirname, 'src/widgets')
 		}
 	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: `
-					@use "@/shared/styles/base/variables" as *;
-					@use "@/shared/styles/utils/" as *;
-				`
-			}
-		}
-	},
 	server: {
 		watch: {
 			usePolling: true

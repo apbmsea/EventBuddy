@@ -1,21 +1,20 @@
 import { userReducer } from '@entities/user';
-import { loginReducer } from '@features/auth/login';
-import { logoutReducer } from '@features/auth/logout';
-import { recoveryReducer } from '@features/auth/recovery';
-import { refreshReducer } from '@features/auth/refresh';
-import { registrationReducer } from '@features/auth/registration';
-import { verifyReducer } from '@features/auth/verify';
+import { logoutReducer } from '@features/logout';
+import { refreshReducer } from '@features/refresh';
+import { loginReducer } from '@pages/LoginPage/ui/feature/login';
+import { recoveryReducer } from '@pages/RecoveryPage/ui/feature/recovery';
+import { registrationReducer } from '@pages/RegisterPage/ui/feature/registration';
+import { verifyReducer } from '@pages/VerifyPage/ui/feature/verify';
 import { combineReducers } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
 	user: userReducer,
-
 	login: loginReducer,
 	registration: registrationReducer,
 	verify: verifyReducer,
-	logout: logoutReducer,
+	recovery: recoveryReducer,
 	refresh: refreshReducer,
-	recovery: recoveryReducer
+	logout: logoutReducer
 });
 
 export default rootReducer;

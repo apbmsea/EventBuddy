@@ -1,18 +1,18 @@
-import { watchLogin } from '@features/auth/login';
-import { watchLogout } from '@features/auth/logout';
-import { watchRecovery } from '@features/auth/recovery';
-import { watchRefresh } from '@features/auth/refresh';
-import { watchRegistration } from '@features/auth/registration';
-import { watchVerify } from '@features/auth/verify';
+import { watchLogout } from '@features/logout';
+import { watchRefresh } from '@features/refresh';
+import { watchLogin } from '@pages/LoginPage/ui/feature/login';
+import { watchRecovery } from '@pages/RecoveryPage/ui/feature/recovery';
+import { watchRegistration } from '@pages/RegisterPage/ui/feature/registration';
+import { watchVerify } from '@pages/VerifyPage/ui/feature/verify';
 import { all } from 'typed-redux-saga';
 
 export default function* rootSaga() {
 	yield all([
-		watchRegistration(),
 		watchLogin(),
-		watchLogout(),
+		watchRegistration(),
 		watchVerify(),
+		watchRecovery(),
 		watchRefresh(),
-		watchRecovery()
+		watchLogout()
 	]);
 }

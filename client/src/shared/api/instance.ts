@@ -1,5 +1,9 @@
 import type { HandledError } from '@shared/types/error.types';
 import axios from 'axios';
+import { store } from '@app/store/store';
+import { refreshRequest } from '@features/refresh/model/refreshSlice';
+import { logoutRequest } from '@features/logout';
+import { navigateTo } from '@shared/utils/navigate';
 
 export const $api = axios.create({
 	baseURL: import.meta.env.VITE_SERVER_URL,
@@ -44,11 +48,14 @@ $api.interceptors.response.use(
 		switch (handledError.status) {
 			case 400:
 				return Promise.reject(handledError);
-				
+
 			case 401:
 				if (!originalRequest._isRetry) {
 					originalRequest._isRetry = true;
-					console.log('refresh');
+					await store.dispatch(refreshRequest());
+				} else {
+					await store.dispatch(logoutRequest());
+					await navigateTo('/login');
 				}
 				break;
 
