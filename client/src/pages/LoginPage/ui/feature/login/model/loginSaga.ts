@@ -4,7 +4,7 @@ import type { LoginPayload } from '@pages/LoginPage/ui/entities/login';
 import { login } from '@pages/LoginPage/ui/entities/login';
 import { loginFailure, loginRequest, loginSuccess } from './loginSlice';
 import { isHandledError } from '@shared/utils/isHandeledError';
-import { setUser } from '@entities/user';
+import { setUser } from '@features/user';
 import { navigateTo } from '@shared/utils/navigate';
 
 export function* loginSaga(action: PayloadAction<LoginPayload>) {

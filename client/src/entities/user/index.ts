@@ -1,1 +1,1 @@
-export { default as userReducer, setUser, resetUser } from './model/userSlice';
+export { type User } from './model/user.types';

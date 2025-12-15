@@ -2,7 +2,7 @@ import { refresh } from '@entities/refresh';
 import { runSaga } from 'redux-saga';
 import { refreshSaga } from '../model/refreshSaga';
 import { refreshFailure, refreshSuccess } from '../model/refreshSlice';
-import { setUser } from '@entities/user';
+import { setUser } from '@features/user';
 import { Role } from '@shared/types/role.types';
 
 jest.mock('@entities/refresh', () => ({
