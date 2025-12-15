@@ -5,6 +5,7 @@ import { useForm } from '@shared/hooks/useForm';
 import { Role } from '@shared/types/role.types';
 import { useEffect, useState } from 'react';
 import { profileRequest } from '../model/profileSlice';
+import { Avatar } from '../../avatar';
 
 const ProfileForm = () => {
 	const dispatch = useAppDispatch();
@@ -134,10 +135,7 @@ const ProfileForm = () => {
 					Удалить аккаунт
 				</button>
 			</form>
-			<div>
-				<img src='' alt='Не удалось загрузить фото' />
-				<button>Изменить</button>
-			</div>
+			<Avatar />
 		</div>
 	);
 };
