@@ -3,6 +3,5 @@ export {
 	setUser,
 	resetUser,
 	getUserRequest,
-	updateUserRequest,
 	deleteUserRequest
 } from '../../features/user/model/userSlice';

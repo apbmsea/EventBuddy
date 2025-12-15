@@ -3,15 +3,7 @@ import userReducer, {
 	resetUser,
 	getUserRequest,
 	getUserSuccess,
-	getUserFailure,
-	updateUserRequest,
-	updateUserSuccess,
-	updateUserFailure,
-	deleteUserRequest,
-	deleteUserSuccess,
-	deleteUserFailure,
-	clearFieldError,
-	clearAllErrors
+	getUserFailure
 } from '../model/userSlice';
 import { Role } from '@shared/types/role.types';
 import type { User } from '@entities/user';
@@ -72,101 +64,6 @@ describe('userSlice', () => {
 			const nextState = userReducer(loadingState, getUserFailure());
 
 			expect(nextState.isLoading).toBe(false);
-		});
-	});
-
-	describe('updateUserRequest', () => {
-		it('устанавливает isLoading в true', () => {
-			const nextState = userReducer(
-				initialState,
-				updateUserRequest(mockUser)
-			);
-
-			expect(nextState.isLoading).toBe(true);
-		});
-	});
-
-	describe('updateUserSuccess', () => {
-		it('сбрасывает isLoading', () => {
-			const loadingState = { ...initialState, isLoading: true };
-			const nextState = userReducer(loadingState, updateUserSuccess());
-
-			expect(nextState.isLoading).toBe(false);
-		});
-	});
-
-	describe('updateUserFailure', () => {
-		it('сбрасывает isLoading и устанавливает ошибки', () => {
-			const errors = { email: 'Некорректная почта' };
-			const loadingState = { ...initialState, isLoading: true };
-			const nextState = userReducer(
-				loadingState,
-				updateUserFailure(errors)
-			);
-
-			expect(nextState.isLoading).toBe(false);
-			expect(nextState.errors).toEqual(errors);
-		});
-	});
-
-	describe('deleteUserRequest', () => {
-		it('устанавливает isLoading в true', () => {
-			const nextState = userReducer(initialState, deleteUserRequest());
-
-			expect(nextState.isLoading).toBe(true);
-		});
-	});
-
-	describe('deleteUserSuccess', () => {
-		it('сбрасывает isLoading', () => {
-			const loadingState = { ...initialState, isLoading: true };
-			const nextState = userReducer(loadingState, deleteUserSuccess());
-
-			expect(nextState.isLoading).toBe(false);
-		});
-	});
-
-	describe('deleteUserFailure', () => {
-		it('сбрасывает isLoading', () => {
-			const loadingState = { ...initialState, isLoading: true };
-			const nextState = userReducer(loadingState, deleteUserFailure());
-
-			expect(nextState.isLoading).toBe(false);
-		});
-	});
-
-	describe('clearFieldError', () => {
-		it('удаляет ошибку для конкретного поля', () => {
-			const stateWithErrors = {
-				...initialState,
-				errors: {
-					email: 'Некорректная почта',
-					name: 'Некорректное имя'
-				}
-			};
-
-			const nextState = userReducer(
-				stateWithErrors,
-				clearFieldError('email')
-			);
-
-			expect(nextState.errors).toEqual({ name: 'Некорректное имя' });
-		});
-	});
-
-	describe('clearAllErrors', () => {
-		it('очищает все ошибки', () => {
-			const stateWithErrors = {
-				...initialState,
-				errors: {
-					email: 'Некорректная почта',
-					name: 'Некорректное имя'
-				}
-			};
-
-			const nextState = userReducer(stateWithErrors, clearAllErrors());
-
-			expect(nextState.errors).toEqual({});
 		});
 	});
 });

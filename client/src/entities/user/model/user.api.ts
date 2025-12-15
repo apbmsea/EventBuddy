@@ -5,11 +5,6 @@ export async function getUser() {
 	return response.data;
 }
 
-export async function updateUser() {
-	const response = await $api.put('/users/me');
-	return response.data;
-}
-
 export async function deleteUser() {
 	const response = await $api.delete('/users/me');
 	return response.data;

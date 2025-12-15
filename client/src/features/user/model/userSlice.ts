@@ -4,13 +4,11 @@ import type { User } from '../../../entities/user/model/user.types';
 interface UserState {
 	user: User | null;
 	isLoading: boolean;
-	errors: Record<string, string>;
 }
 
 const initialState: UserState = {
 	user: null,
-	isLoading: false,
-	errors: {}
+	isLoading: false
 };
 
 const userSlice = createSlice({
@@ -33,25 +31,6 @@ const userSlice = createSlice({
 		getUserFailure: state => {
 			state.isLoading = false;
 		},
-		updateUserRequest: (state, _action: PayloadAction<User>) => {
-			state.isLoading = true;
-		},
-		updateUserSuccess: state => {
-			state.isLoading = false;
-		},
-		updateUserFailure: (
-			state,
-			action: PayloadAction<Record<string, string>>
-		) => {
-			state.isLoading = false;
-			state.errors = action.payload;
-		},
-		clearFieldError: (state, action: PayloadAction<string>) => {
-			delete state.errors[action.payload];
-		},
-		clearAllErrors: state => {
-			state.errors = {};
-		},
 		deleteUserRequest: state => {
 			state.isLoading = true;
 		},
@@ -70,11 +49,6 @@ export const {
 	getUserRequest,
 	getUserSuccess,
 	getUserFailure,
-	updateUserRequest,
-	updateUserSuccess,
-	updateUserFailure,
-	clearAllErrors,
-	clearFieldError,
 	deleteUserRequest,
 	deleteUserSuccess,
 	deleteUserFailure
