@@ -1,7 +1,7 @@
 import { updateProfile } from '../model/profile.api';
 import { $api } from '@shared/api/instance';
 import { Role } from '@shared/types/role.types';
-import type { User } from '@entities/user';
+import type { User } from '@shared/types/user.type';
 
 jest.mock('@shared/api/instance', () => ({
 	$api: {

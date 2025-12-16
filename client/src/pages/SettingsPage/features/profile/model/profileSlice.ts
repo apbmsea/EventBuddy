@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { User } from '@entities/user';
+import type { User } from '@shared/types/user.type';
 
 interface ProfileState {
 	isLoading: boolean;
