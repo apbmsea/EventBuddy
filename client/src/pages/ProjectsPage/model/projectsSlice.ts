@@ -1,16 +1,19 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { Project } from '@entities/project';
+import type { SortOption } from '../entities/sorting';
 
 interface ProjectsState {
 	isLoading: boolean;
 	projects: Project[];
 	search: string;
+	sort: SortOption;
 }
 
 const initialState: ProjectsState = {
 	isLoading: false,
 	projects: [],
-	search: ''
+	search: '',
+	sort: 'updated'
 };
 
 const projectsSlice = createSlice({
@@ -19,6 +22,9 @@ const projectsSlice = createSlice({
 	reducers: {
 		setSearch(state, action: PayloadAction<string>) {
 			state.search = action.payload;
+		},
+		setSort(state, action: PayloadAction<SortOption>) {
+			state.sort = action.payload;
 		},
 		getProjectsRequest: state => {
 			state.isLoading = true;
@@ -37,6 +43,7 @@ export const {
 	getProjectsSuccess,
 	getProjectsRequest,
 	getProjectsFailure,
-	setSearch
+	setSearch,
+	setSort
 } = projectsSlice.actions;
 export default projectsSlice.reducer;

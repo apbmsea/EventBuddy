@@ -10,9 +10,10 @@ import type { RootState } from '@shared/types/store.types';
 export function* getProjectsSaga() {
 	try {
 		const state: RootState = yield select();
-		const { search: searchQuery } = state.projects;
+		const { search: searchQuery, sort: sortQuery } = state.projects;
 		const querry = {
-			search: searchQuery || undefined
+			search: searchQuery || undefined,
+			sort: sortQuery
 		};
 		const projects: Project[] = yield* call(getProjects, querry);
 		yield* put(getProjectsSuccess(projects));
