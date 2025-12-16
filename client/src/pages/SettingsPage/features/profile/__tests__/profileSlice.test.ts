@@ -6,7 +6,7 @@ import profileReducer, {
 	clearAllErrors
 } from '../model/profileSlice';
 import { Role } from '@shared/types/role.types';
-import type { User } from '@entities/user';
+import type { User } from '@shared/types/user.type';
 
 const initialState = {
 	isLoading: false,

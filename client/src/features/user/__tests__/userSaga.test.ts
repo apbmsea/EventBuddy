@@ -3,7 +3,7 @@ import { runSaga } from 'redux-saga';
 import { getUserSaga } from '../model/userSaga';
 import { getUserSuccess, getUserFailure } from '../model/userSlice';
 import { Role } from '@shared/types/role.types';
-import type { User } from '@entities/user';
+import type { User } from '@shared/types/user.type';
 
 jest.mock('@entities/user/model/user.api', () => ({
 	getUser: jest.fn()
