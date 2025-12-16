@@ -4,17 +4,22 @@ import type { Project } from '@entities/project';
 interface ProjectsState {
 	isLoading: boolean;
 	projects: Project[];
+	search: string;
 }
 
 const initialState: ProjectsState = {
 	isLoading: false,
-	projects: []
+	projects: [],
+	search: ''
 };
 
 const projectsSlice = createSlice({
 	name: 'projects',
 	initialState,
 	reducers: {
+		setSearch(state, action: PayloadAction<string>) {
+			state.search = action.payload;
+		},
 		getProjectsRequest: state => {
 			state.isLoading = true;
 		},
@@ -28,6 +33,10 @@ const projectsSlice = createSlice({
 	}
 });
 
-export const { getProjectsSuccess, getProjectsRequest, getProjectsFailure } =
-	projectsSlice.actions;
+export const {
+	getProjectsSuccess,
+	getProjectsRequest,
+	getProjectsFailure,
+	setSearch
+} = projectsSlice.actions;
 export default projectsSlice.reducer;

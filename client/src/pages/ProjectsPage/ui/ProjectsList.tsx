@@ -5,11 +5,15 @@ import { ProjectCard } from '@features/project';
 
 const ProjectsList = () => {
 	const dispatch = useAppDispatch();
-	const projects = useAppSelector(state => state.projects.projects);
+	const { projects } = useAppSelector(state => state.projects);
 
 	useEffect(() => {
 		dispatch(getProjectsRequest());
 	}, [dispatch]);
+
+	if (projects.length === 0) {
+		return <p>Проекты не найденны</p>;
+	}
 
 	return (
 		<ul>
