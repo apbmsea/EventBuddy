@@ -6,7 +6,7 @@ import { logoutRequest } from '@features/logout';
 import { navigateTo } from '@shared/utils/navigate';
 
 export const $api = axios.create({
-	baseURL: import.meta.env.VITE_SERVER_URL,
+	baseURL: import.meta.env.VITE_SERVER_URL || 'https://localhost:8080',
 	withCredentials: true,
 	timeout: 10000
 });
