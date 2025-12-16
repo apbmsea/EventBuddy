@@ -7,6 +7,8 @@ import { registrationReducer } from '@pages/RegisterPage/ui/feature/registration
 import { verifyReducer } from '@pages/VerifyPage/ui/feature/verify';
 import { combineReducers } from '@reduxjs/toolkit';
 import { profileReducer } from '@pages/SettingsPage/features/profile';
+import { projectsReducer } from '@pages/ProjectsPage';
+import { viewReducer } from '@pages/ProjectsPage/features/view';
 
 const rootReducer = combineReducers({
 	user: userReducer,
@@ -16,7 +18,9 @@ const rootReducer = combineReducers({
 	recovery: recoveryReducer,
 	refresh: refreshReducer,
 	logout: logoutReducer,
-	profile: profileReducer
+	profile: profileReducer,
+	projects: projectsReducer,
+	view: viewReducer
 });
 
 export default rootReducer;

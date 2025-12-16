@@ -7,6 +7,7 @@ import { VerifyPage } from '@pages/VerifyPage';
 import { RecoveryPage } from '@pages/RecoveryPage';
 import { SettingsPage } from '@pages/SettingsPage';
 import { ProfileForm } from '@pages/SettingsPage/features/profile';
+import { ProjectsPage } from '@pages/ProjectsPage';
 
 export const router = createBrowserRouter([
 	{
@@ -24,7 +25,8 @@ export const router = createBrowserRouter([
 				children: [
 					{ index: true, path: 'profile', element: <ProfileForm /> }
 				]
-			}
+			},
+			{ path: '/projects', element: <ProjectsPage /> }
 		]
 	}
 ]);
