@@ -1,4 +1,4 @@
-import ProjectsList from './ProjectsList';
+import { ProjectsList } from '@features/projects';
 import ProjectsToolbar from './ProjectsToolbar';
 
 const ProjectsPage = () => {

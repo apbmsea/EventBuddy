@@ -1,5 +1,6 @@
 import { $api } from '@shared/api/instance';
-import type { GetProjectsParams, Project } from './project.types';
+import type { GetProjectsParams } from './projects.types';
+import type { Project } from '@entities/project/model/project.types';
 
 export async function getProjects(
 	params: GetProjectsParams

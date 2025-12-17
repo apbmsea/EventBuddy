@@ -1,15 +1,16 @@
 import { call, put, select, takeLatest } from 'typed-redux-saga';
-import { getProjects, type Project } from '@entities/project';
+import { type Project } from '@entities/project';
 import {
 	getProjectsFailure,
 	getProjectsRequest,
 	getProjectsSuccess
 } from './projectsSlice';
 import type { RootState } from '@shared/types/store.types';
+import { getProjects } from '@entities/projects';
 
 export function* getProjectsSaga() {
 	try {
-		const state: RootState = yield select();
+		const state: RootState = yield* select();
 		const { search: searchQuery, sort: sortQuery } = state.projects;
 		const querry = {
 			search: searchQuery || undefined,

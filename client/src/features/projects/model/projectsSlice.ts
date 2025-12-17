@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { Project } from '@entities/project';
-import type { SortOption } from '../entities/sorting';
+import type { SortOption } from '../../../pages/ProjectsPage/entities/sorting';
 
 interface ProjectsState {
 	isLoading: boolean;

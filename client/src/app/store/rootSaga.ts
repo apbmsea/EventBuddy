@@ -2,7 +2,7 @@ import { watchLogout } from '@features/logout';
 import { watchRefresh } from '@features/refresh';
 import { watchUser } from '@features/user/model/userSaga';
 import { watchLogin } from '@pages/LoginPage/ui/feature/login';
-import { watchProjects } from '@pages/ProjectsPage';
+import { watchProjects } from '@features/projects';
 import { watchRecovery } from '@pages/RecoveryPage/ui/feature/recovery';
 import { watchRegistration } from '@pages/RegisterPage/ui/feature/registration';
 import { watchProfile } from '@pages/SettingsPage/features/profile';
