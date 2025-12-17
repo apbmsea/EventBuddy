@@ -11,7 +11,7 @@ const SettingsSidebar = () => {
 					<NavLink to='profile'>Профиль</NavLink>
 				</li>
 				<li>
-					<NavLink to='notifications'>Уведомления</NavLink>
+					<NavLink to='projects'>Проекты</NavLink>
 				</li>
 				<li>
 					<NavLink to='view'>Оформление</NavLink>

@@ -2,6 +2,7 @@ import type { Project } from '@entities/project';
 
 type ProjectCardPayload = {
 	project: Project;
+	onClick?: () => void;
 };
 
 const ProjectCard = ({ project }: ProjectCardPayload) => {
