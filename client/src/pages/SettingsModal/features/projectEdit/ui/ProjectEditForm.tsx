@@ -3,7 +3,10 @@ import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
 import { useForm } from '@shared/hooks/useForm';
 import { type Project } from '@entities/project';
 import { projectEditRequest } from '../model/projectEditSlice';
-import { getProjectRequest } from '@features/project/model/projectSlice';
+import {
+	deleteProjectRequest,
+	getProjectRequest
+} from '@features/project/model/projectSlice';
 import { Role } from '@shared/types/role.types';
 
 const ProjectEditForm = () => {
@@ -76,57 +79,71 @@ const ProjectEditForm = () => {
 	};
 
 	return (
-		<form
-			onSubmit={handleSave}
-			style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
-		>
-			<input
-				name='title'
-				placeholder='Название проекта'
-				value={values.title}
-				onChange={handleChange}
-				disabled={!isEditing}
-			/>
-			{errors.title && <span>{errors.title}</span>}
+		<div>
+			<form
+				onSubmit={handleSave}
+				style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
+			>
+				<input
+					name='title'
+					placeholder='Название проекта'
+					value={values.title}
+					onChange={handleChange}
+					disabled={!isEditing}
+				/>
+				{errors.title && <span>{errors.title}</span>}
 
-			<input
-				name='description'
-				placeholder='Описание проекта'
-				value={values.description}
-				onChange={handleChange}
-				disabled={!isEditing}
-			/>
-			{errors.description && <span>{errors.description}</span>}
+				<input
+					name='description'
+					placeholder='Описание проекта'
+					value={values.description}
+					onChange={handleChange}
+					disabled={!isEditing}
+				/>
+				{errors.description && <span>{errors.description}</span>}
 
-			<input
-				name='deadline'
-				type='date'
-				placeholder='Дедлайн'
-				value={values.deadline}
-				onChange={handleChange}
-				disabled={!isEditing}
-			/>
-			{errors.deadline && <span>{errors.deadline}</span>}
+				<input
+					name='deadline'
+					type='date'
+					placeholder='Дедлайн'
+					value={values.deadline}
+					onChange={handleChange}
+					disabled={!isEditing}
+				/>
+				{errors.deadline && <span>{errors.deadline}</span>}
 
-			{!isEditing ? (
-				<button type='button' onClick={handleEdit} disabled={isLoading}>
-					Редактировать
-				</button>
-			) : (
-				<div style={{ display: 'flex', gap: '8px' }}>
-					<button type='submit' disabled={isLoading}>
-						Сохранить
-					</button>
+				{!isEditing ? (
 					<button
 						type='button'
-						onClick={handleCancel}
+						onClick={handleEdit}
 						disabled={isLoading}
 					>
-						Отмена
+						Редактировать
 					</button>
-				</div>
-			)}
-		</form>
+				) : (
+					<div style={{ display: 'flex', gap: '8px' }}>
+						<button type='submit' disabled={isLoading}>
+							Сохранить
+						</button>
+						<button
+							type='button'
+							onClick={handleCancel}
+							disabled={isLoading}
+						>
+							Отмена
+						</button>
+					</div>
+				)}
+			</form>
+
+			<button
+				onClick={() =>
+					dispatch(deleteProjectRequest({ id: projectId || '' }))
+				}
+			>
+				Удалить проект
+			</button>
+		</div>
 	);
 };
 

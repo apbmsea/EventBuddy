@@ -1,10 +1,13 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeLatest } from 'typed-redux-saga';
-import { getProject } from '@entities/project/model/project.api';
+import { deleteProject, getProject } from '@entities/project/model/project.api';
 import {
 	getProjectFailure,
 	getProjectSuccess,
-	getProjectRequest
+	getProjectRequest,
+	deleteProjectSuccess,
+	deleteProjectFailure,
+	deleteProjectRequest
 } from './projectSlice';
 
 export function* getProjectSaga(action: PayloadAction<{ id: string }>) {
@@ -17,6 +20,17 @@ export function* getProjectSaga(action: PayloadAction<{ id: string }>) {
 	}
 }
 
+export function* deleteProjectSaga(action: PayloadAction<{ id: string }>) {
+	try {
+		yield* call(deleteProject, action.payload.id);
+		yield* put(deleteProjectSuccess());
+	} catch (error: unknown) {
+		yield* put(deleteProjectFailure());
+		console.error('Delete Project error:', error);
+	}
+}
+
 export function* watchProject() {
 	yield* takeLatest(getProjectRequest.type, getProjectSaga);
+	yield* takeLatest(deleteProjectRequest.type, deleteProjectSaga);
 }
