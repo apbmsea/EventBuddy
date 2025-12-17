@@ -26,10 +26,29 @@ const projectSlice = createSlice({
 		},
 		getProjectFailure: state => {
 			state.isLoading = false;
+		},
+		deleteProjectRequest: (
+			state,
+			_action: PayloadAction<{ id: string }>
+		) => {
+			state.isLoading = true;
+		},
+		deleteProjectSuccess: state => {
+			state.isLoading = false;
+			state.project = null;
+		},
+		deleteProjectFailure: state => {
+			state.isLoading = false;
 		}
 	}
 });
 
-export const { getProjectRequest, getProjectSuccess, getProjectFailure } =
-	projectSlice.actions;
+export const {
+	getProjectRequest,
+	getProjectSuccess,
+	getProjectFailure,
+	deleteProjectRequest,
+	deleteProjectFailure,
+	deleteProjectSuccess
+} = projectSlice.actions;
 export default projectSlice.reducer;
