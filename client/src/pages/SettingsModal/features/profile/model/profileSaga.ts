@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeLatest } from 'typed-redux-saga';
 import { isHandledError } from '@shared/utils/isHandeledError';
-import { updateProfile } from '@pages/SettingsPage/entities/profile/model/profile.api';
+import { updateProfile } from '@pages/SettingsModal/entities/profile/model/profile.api';
 import { profileFailure, profileRequest, profileSuccess } from './profileSlice';
 import type { User } from '@shared/types/user.type';
 import { getUserRequest } from '@features/user';

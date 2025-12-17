@@ -1,4 +1,4 @@
-import { uploadAvatar } from '@pages/SettingsPage/entities/avatar';
+import { uploadAvatar } from '@pages/SettingsModal/entities/avatar';
 import { store } from '@app/store/store';
 import { getUserRequest } from '@features/user';
 

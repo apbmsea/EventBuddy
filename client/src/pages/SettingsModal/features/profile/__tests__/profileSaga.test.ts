@@ -1,4 +1,4 @@
-import { updateProfile } from '@pages/SettingsPage/entities/profile/model/profile.api';
+import { updateProfile } from '@pages/SettingsModal/entities/profile/model/profile.api';
 import { runSaga } from 'redux-saga';
 import { updateProfileSaga } from '../model/profileSaga';
 import {

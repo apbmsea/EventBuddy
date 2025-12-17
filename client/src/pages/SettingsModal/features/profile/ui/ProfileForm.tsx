@@ -10,14 +10,13 @@ import { Avatar } from '../../avatar';
 const ProfileForm = () => {
 	const dispatch = useAppDispatch();
 	const { user } = useAppSelector(state => state.user);
-	const { isLoading, errors } = useAppSelector(state => state.profile);
 	const [isEditing, setIsEditing] = useState(false);
 
 	useEffect(() => {
 		dispatch(getUserRequest());
 	}, [dispatch]);
 
-	const { values, handleChange, setValues } = useForm(
+	const { values, handleChange, isLoading, errors, setValues } = useForm(
 		{
 			name: user?.name || '',
 			email: user?.email || '',
