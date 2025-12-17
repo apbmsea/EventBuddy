@@ -6,7 +6,8 @@ interface SliceState {
 	errors?: Record<string, string>;
 }
 
-export const useForm = <T extends Record<string, string | number | boolean>>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const useForm = <T extends Record<string, any>>(
 	initialValues: T,
 	sliceName: string
 ) => {

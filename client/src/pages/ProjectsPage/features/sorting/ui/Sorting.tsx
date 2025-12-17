@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
 import {
 	getProjectsRequest,
 	setSort
-} from '@pages/ProjectsPage/model/projectsSlice';
+} from '@features/projects/model/projectsSlice';
 import type { SortOption } from '@pages/ProjectsPage/entities/sorting';
 
 const SortSelect = () => {

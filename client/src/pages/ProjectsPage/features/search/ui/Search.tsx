@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
 	setSearch,
 	getProjectsRequest
-} from '@pages/ProjectsPage/model/projectsSlice';
+} from '@features/projects/model/projectsSlice';
 import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
 
 const Search = () => {

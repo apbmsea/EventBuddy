@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
-import { toggleView } from '../model/viewSlice';
+import { toggleView } from '@features/projects/model/projectsSlice';
 
 const ViewSwitcher = () => {
-	const view = useAppSelector(state => state.view.view);
+	const view = useAppSelector(state => state.projects.view);
 	const dispatch = useAppDispatch();
 
 	const handleToggle = () => dispatch(toggleView());

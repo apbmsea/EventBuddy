@@ -11,7 +11,3 @@ export interface Project {
 	createdAt: string;
 	updatedAt: string;
 }
-
-export interface GetProjectsParams {
-	search?: string;
-}

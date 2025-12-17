@@ -1,11 +1,6 @@
 import { $api } from '@shared/api/instance';
-import type { GetProjectsParams, Project } from './project.types';
 
-export async function getProjects(
-	params: GetProjectsParams
-): Promise<Project[]> {
-	const response = await $api.get<Project[]>('/projects', {
-		params
-	});
+export async function getProject(id: string) {
+	const response = await $api.get(`/projects/${id}`);
 	return response.data;
 }
