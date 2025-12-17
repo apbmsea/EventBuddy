@@ -33,6 +33,7 @@ const settingsSlice = createSlice({
 			}
 		},
 		openProjectSettings(state, action: PayloadAction<string>) {
+			state.isOpen = true;
 			state.tab = 'project';
 			state.projectId = action.payload;
 		}
