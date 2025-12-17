@@ -3,7 +3,7 @@ import { uploadAvatar } from '@pages/SettingsModal/entities/avatar';
 import { store } from '@app/store/store';
 import { getUserRequest } from '@features/user';
 
-jest.mock('@pages/SettingsPage/entities/avatar', () => ({
+jest.mock('@pages/SettingsModal/entities/avatar', () => ({
 	uploadAvatar: jest.fn()
 }));
 

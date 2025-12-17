@@ -11,7 +11,7 @@ import { isHandledError } from '@shared/utils/isHandeledError';
 import { Role } from '@shared/types/role.types';
 import type { User } from '@shared/types/user.type';
 
-jest.mock('@pages/SettingsPage/entities/profile/model/profile.api', () => ({
+jest.mock('@pages/SettingsModal/entities/profile/model/profile.api', () => ({
 	updateProfile: jest.fn()
 }));
 
