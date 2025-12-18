@@ -10,6 +10,7 @@ import { watchVerify } from '@pages/VerifyPage/ui/feature/verify';
 import { all } from 'typed-redux-saga';
 import { watchProject } from '@features/project';
 import { watchEditProject } from '@pages/SettingsModal/features/projectEdit';
+import { watchCreateProject } from '@features/projectCreate';
 
 export default function* rootSaga() {
 	yield all([
@@ -23,6 +24,7 @@ export default function* rootSaga() {
 		watchProfile(),
 		watchProjects(),
 		watchEditProject(),
+		watchCreateProject(),
 		watchProject()
 	]);
 }
