@@ -1,1 +1,1 @@
-export type ViewType = 'grid' | 'list';
+export type ViewType = 'grid' | 'list' | 'settings';

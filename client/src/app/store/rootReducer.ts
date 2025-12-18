@@ -6,9 +6,12 @@ import { recoveryReducer } from '@pages/RecoveryPage/ui/feature/recovery';
 import { registrationReducer } from '@pages/RegisterPage/ui/feature/registration';
 import { verifyReducer } from '@pages/VerifyPage/ui/feature/verify';
 import { combineReducers } from '@reduxjs/toolkit';
-import { profileReducer } from '@pages/SettingsPage/features/profile';
-import { projectsReducer } from '@pages/ProjectsPage';
-import { viewReducer } from '@pages/ProjectsPage/features/view';
+import { profileReducer } from '@pages/SettingsModal/features/profile';
+import { projectsReducer } from '@features/projects';
+import { projectReducer } from '@features/project';
+import { settingsReducer } from '@pages/SettingsModal';
+import { projectEditReducer } from '@pages/SettingsModal/features/projectEdit';
+import { projectCreateReducer } from '@features/projectCreate';
 
 const rootReducer = combineReducers({
 	user: userReducer,
@@ -20,7 +23,10 @@ const rootReducer = combineReducers({
 	logout: logoutReducer,
 	profile: profileReducer,
 	projects: projectsReducer,
-	view: viewReducer
+	project: projectReducer,
+	projectCreate: projectCreateReducer,
+	projectEdit: projectEditReducer,
+	settings: settingsReducer
 });
 
 export default rootReducer;

@@ -1,4 +1,6 @@
+import { ProjectCreateForm } from '@features/projectCreate';
 import { refreshRequest } from '@features/refresh';
+import { SettingsModal } from '@pages/SettingsModal';
 import { setNavigate } from '@shared/utils/navigate';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -26,6 +28,8 @@ const Layout = () => {
 
 	return (
 		<div className='app-layout'>
+			<ProjectCreateForm />
+			<SettingsModal />
 			<Outlet />
 		</div>
 	);
