@@ -20,7 +20,6 @@ const ProfileForm = () => {
 		{
 			name: user?.name || '',
 			email: user?.email || '',
-			description: user?.description || '',
 			password: '',
 			role: user?.role || Role.INDIVIDUAL
 		},
@@ -32,7 +31,6 @@ const ProfileForm = () => {
 			setValues({
 				name: user.name || '',
 				email: user.email || '',
-				description: user.description || '',
 				password: '',
 				role: user.role
 			});
@@ -53,7 +51,6 @@ const ProfileForm = () => {
 			setValues({
 				name: user.name || '',
 				email: user.email || '',
-				description: user.description || '',
 				password: '',
 				role: user.role
 			});
@@ -94,14 +91,6 @@ const ProfileForm = () => {
 					disabled={!isEditing}
 				/>
 				{errors.password && <span>{errors.password}</span>}
-				<input
-					name='description'
-					placeholder='Описание...'
-					value={values.description}
-					onChange={handleChange}
-					disabled={!isEditing}
-				/>
-				{errors.description && <span>{errors.description}</span>}
 
 				{!isEditing ? (
 					<button

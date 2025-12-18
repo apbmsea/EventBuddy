@@ -10,6 +10,7 @@ const RegistrationForm: React.FC = () => {
 
 	const { values, handleChange, isLoading, errors, hasErrors } = useForm(
 		{
+			name: '',
 			email: '',
 			password: '',
 			role: Role.INDIVIDUAL
@@ -23,6 +24,17 @@ const RegistrationForm: React.FC = () => {
 
 	return (
 		<form onSubmit={handleSubmit}>
+			<input
+				name='name'
+				type='text'
+				value={values.name}
+				onChange={handleChange}
+				placeholder='Имя'
+				autoComplete='name'
+				required
+			/>
+			{errors.name && <span>{errors.name}</span>}
+
 			<input
 				name='email'
 				type='email'
