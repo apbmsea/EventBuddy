@@ -1,4 +1,4 @@
-import type { Project } from '@entities/project';
+import type { EditProjectPayload } from '@pages/SettingsModal/entities/projectEdit/model/projectEdit.types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface ProjectEditState {
@@ -15,7 +15,10 @@ const projectEditSlice = createSlice({
 	name: 'projectEdit',
 	initialState,
 	reducers: {
-		projectEditRequest: (state, _action: PayloadAction<Project>) => {
+		projectEditRequest: (
+			state,
+			_action: PayloadAction<{ id: string; project: EditProjectPayload }>
+		) => {
 			state.isLoading = true;
 		},
 		projectEditSuccess: state => {

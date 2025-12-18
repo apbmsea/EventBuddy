@@ -2,16 +2,18 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeLatest } from 'typed-redux-saga';
 import { isHandledError } from '@shared/utils/isHandeledError';
 import { editProject } from '@pages/SettingsModal/entities/projectEdit';
-import type { Project } from '@entities/project';
 import {
 	projectEditFailure,
 	projectEditRequest,
 	projectEditSuccess
 } from './projectEditSlice';
+import type { EditProjectPayload } from '@pages/SettingsModal/entities/projectEdit/model/projectEdit.types';
 
-export function* editProjectSaga(action: PayloadAction<Project>) {
+export function* editProjectSaga(
+	action: PayloadAction<{ id: string; project: EditProjectPayload }>
+) {
 	try {
-		yield* call(editProject, action.payload.id, action.payload);
+		yield* call(editProject, action.payload.id, action.payload.project);
 		yield* put(projectEditSuccess());
 	} catch (error: unknown) {
 		if (isHandledError(error)) {

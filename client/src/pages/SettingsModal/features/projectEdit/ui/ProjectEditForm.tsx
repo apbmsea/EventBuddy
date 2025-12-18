@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
 import { useForm } from '@shared/hooks/useForm';
-import { type Project } from '@entities/project';
 import { projectEditRequest } from '../model/projectEditSlice';
 import {
 	deleteProjectRequest,
 	getProjectRequest
 } from '@features/project/model/projectSlice';
-import { Role } from '@shared/types/role.types';
+import type { EditProjectPayload } from '@pages/SettingsModal/entities/projectEdit/model/projectEdit.types';
 
 const ProjectEditForm = () => {
 	const dispatch = useAppDispatch();
@@ -22,17 +21,11 @@ const ProjectEditForm = () => {
 	}, [dispatch, projectId]);
 
 	const { values, handleChange, isLoading, errors, setValues } =
-		useForm<Project>(
+		useForm<EditProjectPayload>(
 			{
-				id: project?.id || '',
 				title: project?.title || '',
 				description: project?.description || '',
-				deadline: project?.deadline || '',
-				owner: project?.owner || { email: '', role: Role.INDIVIDUAL },
-				members: project?.members || [],
-				archived: project?.archived || false,
-				createdAt: project?.createdAt || '',
-				updatedAt: project?.updatedAt || ''
+				deadline: project?.deadline || ''
 			},
 			'projectEdit'
 		);
@@ -40,15 +33,9 @@ const ProjectEditForm = () => {
 	useEffect(() => {
 		if (project) {
 			setValues({
-				id: project.id,
 				title: project.title,
 				description: project.description,
-				deadline: project.deadline,
-				owner: project.owner,
-				members: project.members,
-				archived: project.archived,
-				createdAt: project.createdAt,
-				updatedAt: project.updatedAt
+				deadline: project.deadline
 			});
 		}
 	}, [project, setValues]);
@@ -58,15 +45,9 @@ const ProjectEditForm = () => {
 	const handleCancel = () => {
 		if (project) {
 			setValues({
-				id: project.id,
 				title: project.title,
 				description: project.description,
-				deadline: project.deadline,
-				owner: project.owner,
-				members: project.members,
-				archived: project.archived,
-				createdAt: project.createdAt,
-				updatedAt: project.updatedAt
+				deadline: project.deadline
 			});
 		}
 		setIsEditing(false);
@@ -74,7 +55,7 @@ const ProjectEditForm = () => {
 
 	const handleSave = (e: React.FormEvent) => {
 		e.preventDefault();
-		dispatch(projectEditRequest(values));
+		dispatch(projectEditRequest({ id: projectId || '', project: values }));
 		setIsEditing(false);
 	};
 
