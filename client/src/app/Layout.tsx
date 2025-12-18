@@ -1,3 +1,4 @@
+import { ProjectCreateForm } from '@features/projectCreate';
 import { refreshRequest } from '@features/refresh';
 import { SettingsModal } from '@pages/SettingsModal';
 import { setNavigate } from '@shared/utils/navigate';
@@ -27,6 +28,7 @@ const Layout = () => {
 
 	return (
 		<div className='app-layout'>
+			<ProjectCreateForm />
 			<SettingsModal />
 			<Outlet />
 		</div>

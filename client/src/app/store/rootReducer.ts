@@ -11,6 +11,7 @@ import { projectsReducer } from '@features/projects';
 import { projectReducer } from '@features/project';
 import { settingsReducer } from '@pages/SettingsModal';
 import { projectEditReducer } from '@pages/SettingsModal/features/projectEdit';
+import { projectCreateReducer } from '@features/projectCreate';
 
 const rootReducer = combineReducers({
 	user: userReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
 	profile: profileReducer,
 	projects: projectsReducer,
 	project: projectReducer,
+	projectCreate: projectCreateReducer,
 	projectEdit: projectEditReducer,
 	settings: settingsReducer
 });
