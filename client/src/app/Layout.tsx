@@ -1,10 +1,9 @@
-import { ProjectCreateForm } from '@features/projectCreate';
 import { refreshRequest } from '@features/refresh';
-import { SettingsModal } from '@pages/SettingsModal';
 import { setNavigate } from '@shared/utils/navigate';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { Modal } from '../features/modal';
 
 const Layout = () => {
 	const navigate = useNavigate();
@@ -28,8 +27,7 @@ const Layout = () => {
 
 	return (
 		<div className='app-layout'>
-			<ProjectCreateForm />
-			<SettingsModal />
+			<Modal />
 			<Outlet />
 		</div>
 	);

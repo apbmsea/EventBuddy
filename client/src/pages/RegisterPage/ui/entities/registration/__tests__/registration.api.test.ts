@@ -11,6 +11,7 @@ jest.mock('@shared/api/instance', () => ({
 
 describe('registration API', () => {
 	const payload: RegistrationPayload = {
+		name: 'ilya',
 		email: 'test@example.com',
 		password: 'password123',
 		role: Role.INDIVIDUAL
