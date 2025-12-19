@@ -38,7 +38,12 @@ describe('login Saga', () => {
 	it('должен успешно входить', async () => {
 		const response = {
 			accessToken: 'e123tfw',
-			user: { id: 1, email: 'test@example.com', role: Role.INDIVIDUAL }
+			user: {
+				name: 'ilya',
+				id: 1,
+				email: 'test@example.com',
+				role: Role.INDIVIDUAL
+			}
 		};
 		jest.mocked(login).mockResolvedValue(response);
 

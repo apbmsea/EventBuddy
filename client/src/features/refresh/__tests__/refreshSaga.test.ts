@@ -24,7 +24,12 @@ describe('refresh Saga', () => {
 	it('должен успешно обновить токен', async () => {
 		const response = {
 			accessToken: 'new-token',
-			user: { id: 1, email: 'test@example.com', role: Role.INDIVIDUAL }
+			user: {
+				name: 'ilya',
+				id: 1,
+				email: 'test@example.com',
+				role: Role.INDIVIDUAL
+			}
 		};
 		jest.mocked(refresh).mockResolvedValue(response);
 
