@@ -12,6 +12,7 @@ jest.mock('@shared/api/instance', () => ({
 
 describe('profile API', () => {
 	const mockUser: User = {
+		id: '1',
 		email: 'test@example.com',
 		name: 'Test User',
 		role: Role.INDIVIDUAL

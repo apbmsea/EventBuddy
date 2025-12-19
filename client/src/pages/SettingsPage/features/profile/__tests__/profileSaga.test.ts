@@ -22,6 +22,7 @@ jest.mock('@shared/utils/isHandeledError', () => ({
 describe('profile Saga', () => {
 	let dispatched: unknown[];
 	const mockUser: User = {
+		id: '1',
 		name: 'ilya',
 		email: 'test@example.com',
 		role: Role.INDIVIDUAL
