@@ -22,6 +22,7 @@ jest.mock('@shared/api/instance', () => ({
 describe('user Saga', () => {
 	let dispatched: unknown[];
 	const mockUser: User = {
+		name: 'ilya',
 		email: 'test@example.com',
 		role: Role.INDIVIDUAL
 	};

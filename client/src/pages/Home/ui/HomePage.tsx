@@ -1,4 +1,4 @@
-import { openSettings } from '@pages/SettingsModal/model/settingsSlice';
+import { openModal } from '@features/modal';
 import { useAppDispatch } from '@shared/hooks/store.hooks';
 import React from 'react';
 
@@ -7,7 +7,9 @@ const HomePage: React.FC = () => {
 	return (
 		<main>
 			Home page{' '}
-			<button onClick={() => dispatch(openSettings())}>модалка</button>
+			<button onClick={() => dispatch(openModal('settings'))}>
+				модалка
+			</button>
 		</main>
 	);
 };

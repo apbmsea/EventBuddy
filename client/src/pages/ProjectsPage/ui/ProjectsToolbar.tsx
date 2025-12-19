@@ -2,7 +2,7 @@ import { useAppDispatch } from '@shared/hooks/store.hooks';
 import { Search } from '../features/search';
 import { Sorting } from '../features/sorting';
 import { ViewSwitcher } from '../features/view';
-import { setIsOpen } from '@features/projectCreate/model/projectCreateSlice';
+import { openModal } from '@features/modal';
 
 const ProjectsToolbar = () => {
 	const dispatch = useAppDispatch();
@@ -11,7 +11,11 @@ const ProjectsToolbar = () => {
 			<Search />
 			<Sorting />
 			<ViewSwitcher />
-			<button onClick={() => dispatch(setIsOpen(true))}>
+			<button
+				onClick={() => {
+					dispatch(openModal('projectCreate'));
+				}}
+			>
 				Новый проект
 			</button>
 		</section>

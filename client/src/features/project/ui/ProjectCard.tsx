@@ -1,9 +1,10 @@
 import type { Project } from '@entities/project';
-import { openProjectSettings } from '@pages/SettingsModal/model/settingsSlice';
 import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
 import { Popover } from '@shared/ui/popover';
 import { useNavigate } from 'react-router-dom';
 import { deleteProjectRequest } from '../model/projectSlice';
+import { openModal } from '@features/modal';
+import { setProjectId } from '@pages/SettingsPage/model/settingsSlice';
 
 type ProjectCardPayload = {
 	project: Project;
@@ -16,7 +17,8 @@ const ProjectCard = ({ project }: ProjectCardPayload) => {
 
 	const handleNavigate = () => {
 		if (view === 'settings') {
-			dispatch(openProjectSettings(project.id));
+			dispatch(openModal('settings'));
+			dispatch(setProjectId(project.id));
 		} else {
 			navigate(`/projects/${project.id}`);
 		}
@@ -29,7 +31,10 @@ const ProjectCard = ({ project }: ProjectCardPayload) => {
 			<img src={project.owner.avatarUrl} alt='' />
 			<Popover trigger={<button>...</button>}>
 				<button
-					onClick={() => dispatch(openProjectSettings(project.id))}
+					onClick={() => {
+						dispatch(openModal('settings'));
+						dispatch(setProjectId(project.id));
+					}}
 				>
 					Редактировать
 				</button>
@@ -41,7 +46,10 @@ const ProjectCard = ({ project }: ProjectCardPayload) => {
 					Удалить
 				</button>
 				<button
-					onClick={() => dispatch(openProjectSettings(project.id))}
+					onClick={() => {
+						dispatch(openModal('settings'));
+						dispatch(setProjectId(project.id));
+					}}
 				>
 					Настройки
 				</button>
