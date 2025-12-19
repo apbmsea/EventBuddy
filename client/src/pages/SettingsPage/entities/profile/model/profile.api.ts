@@ -1,7 +1,7 @@
 import { $api } from '@shared/api/instance';
-import type { User } from '@shared/types/user.type';
+import type { ProfilePayload } from './profile.types';
 
-export async function updateProfile(data: User) {
+export async function updateProfile(data: ProfilePayload) {
 	const response = await $api.put('/users/me', data);
 	return response.data;
 }

@@ -1,3 +1,4 @@
+import type { ProfilePayload } from '@pages/SettingsPage/entities/profile/model/profile.types';
 import profileReducer, {
 	profileRequest,
 	profileSuccess,
@@ -6,17 +7,16 @@ import profileReducer, {
 	clearAllErrors
 } from '../model/profileSlice';
 import { Role } from '@shared/types/role.types';
-import type { User } from '@shared/types/user.type';
 
 const initialState = {
 	isLoading: false,
 	errors: {}
 };
 
-const mockUser: User = {
-	id: '1',
+const mockUser: ProfilePayload = {
 	name: 'ilya',
 	email: 'test@example.com',
+	password: '',
 	role: Role.INDIVIDUAL
 };
 
