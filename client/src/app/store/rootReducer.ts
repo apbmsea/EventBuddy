@@ -13,6 +13,7 @@ import { settingsReducer } from '@pages/SettingsPage';
 import { projectEditReducer } from '@pages/SettingsPage/features/projectEdit';
 import { projectCreateReducer } from '@pages/ProjectsPage/features/projectCreate';
 import { modalReducer } from '@features/modal';
+import { workspaceReducer } from '@pages/WorkSpacePage';
 
 const rootReducer = combineReducers({
 	user: userReducer,
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
 	projectCreate: projectCreateReducer,
 	projectEdit: projectEditReducer,
 	settings: settingsReducer,
-	modal: modalReducer
+	modal: modalReducer,
+	workspace: workspaceReducer
 });
 
 export default rootReducer;

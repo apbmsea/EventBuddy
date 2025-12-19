@@ -9,7 +9,7 @@ import {
 import { getUserRequest } from '@features/user';
 import { isHandledError } from '@shared/utils/isHandeledError';
 import { Role } from '@shared/types/role.types';
-import type { User } from '@shared/types/user.type';
+import type { ProfilePayload } from '@pages/SettingsPage/entities/profile/model/profile.types';
 
 jest.mock('@pages/SettingsPage/entities/profile/model/profile.api', () => ({
 	updateProfile: jest.fn()
@@ -21,9 +21,10 @@ jest.mock('@shared/utils/isHandeledError', () => ({
 
 describe('profile Saga', () => {
 	let dispatched: unknown[];
-	const mockUser: User = {
+	const mockUser: ProfilePayload = {
 		name: 'ilya',
 		email: 'test@example.com',
+		password: '',
 		role: Role.INDIVIDUAL
 	};
 

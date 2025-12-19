@@ -3,10 +3,10 @@ import { call, put, takeLatest } from 'typed-redux-saga';
 import { isHandledError } from '@shared/utils/isHandeledError';
 import { updateProfile } from '@pages/SettingsPage/entities/profile/model/profile.api';
 import { profileFailure, profileRequest, profileSuccess } from './profileSlice';
-import type { User } from '@shared/types/user.type';
 import { getUserRequest } from '@features/user';
+import type { ProfilePayload } from '@pages/SettingsPage/entities/profile/model/profile.types';
 
-export function* updateProfileSaga(action: PayloadAction<User>) {
+export function* updateProfileSaga(action: PayloadAction<ProfilePayload>) {
 	try {
 		yield* call(updateProfile, action.payload);
 		yield* put(profileSuccess());

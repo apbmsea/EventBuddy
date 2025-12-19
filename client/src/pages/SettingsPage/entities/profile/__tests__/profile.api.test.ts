@@ -1,7 +1,8 @@
 import { updateProfile } from '../model/profile.api';
 import { $api } from '@shared/api/instance';
 import { Role } from '@shared/types/role.types';
-import type { User } from '@shared/types/user.type';
+
+import type { ProfilePayload } from '../model/profile.types';
 
 jest.mock('@shared/api/instance', () => ({
 	$api: {
@@ -11,9 +12,10 @@ jest.mock('@shared/api/instance', () => ({
 }));
 
 describe('profile API', () => {
-	const mockUser: User = {
+	const mockUser: ProfilePayload = {
 		email: 'test@example.com',
 		name: 'Test User',
+		password: '',
 		role: Role.INDIVIDUAL
 	};
 
