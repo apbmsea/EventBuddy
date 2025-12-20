@@ -4,6 +4,7 @@ import { sagaMiddleware } from '@app/store/store';
 import { useAppSelector } from '@shared/hooks/store.hooks';
 import { watchWorkspaceSaga } from '../model/workSpaceSaga';
 import { sendPageEnter, sendPageLeave } from '@shared/websocket/shared/page';
+import WorkSpaceHeader from './WorkSpaceHeader';
 
 const WorkspacePage = () => {
 	const user = useAppSelector(state => state.user.user);
@@ -28,7 +29,7 @@ const WorkspacePage = () => {
 
 	return (
 		<main style={{ height: '100vh' }}>
-			<header>Header</header>
+			<WorkSpaceHeader />
 			<div style={{ display: 'flex' }}>
 				<nav>
 					<NavLink to='chat'>Chat</NavLink>

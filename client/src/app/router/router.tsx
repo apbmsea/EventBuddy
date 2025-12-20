@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
 				path: '/projects/:id/workspace',
 				element: <WorkSpacePage />,
 				children: [
-					{ path: 'chat', element: <Chat /> },
+					{ index: true, path: 'chat', element: <Chat /> },
 					{ path: 'todo', element: <Todo /> }
 				]
 			}
