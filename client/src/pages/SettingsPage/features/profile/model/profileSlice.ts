@@ -1,5 +1,5 @@
+import type { ProfilePayload } from '@pages/SettingsPage/entities/profile/model/profile.types';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { User } from '@shared/types/user.type';
 
 interface ProfileState {
 	isLoading: boolean;
@@ -15,7 +15,7 @@ const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
 	reducers: {
-		profileRequest: (state, _action: PayloadAction<User>) => {
+		profileRequest: (state, _action: PayloadAction<ProfilePayload>) => {
 			state.isLoading = true;
 		},
 		profileSuccess: state => {

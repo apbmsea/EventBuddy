@@ -15,6 +15,7 @@ const initialState = {
 };
 
 const mockUser: User = {
+	id: '1',
 	name: 'ilya',
 	email: 'test@example.com',
 	role: Role.INDIVIDUAL

@@ -40,7 +40,7 @@ describe('login Saga', () => {
 			accessToken: 'e123tfw',
 			user: {
 				name: 'ilya',
-				id: 1,
+				id: '1',
 				email: 'test@example.com',
 				role: Role.INDIVIDUAL
 			}
