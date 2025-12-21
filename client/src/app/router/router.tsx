@@ -9,6 +9,7 @@ import { ProjectsPage } from '@pages/ProjectsPage';
 import { WorkSpacePage } from '@pages/WorkSpacePage';
 import Chat from '@pages/WorkSpacePage/ui/Chat';
 import Todo from '@pages/WorkSpacePage/ui/Todo';
+import { MembersPage } from '@pages/MembersPage/indedx';
 
 export const router = createBrowserRouter([
 	{
@@ -26,7 +27,8 @@ export const router = createBrowserRouter([
 				element: <WorkSpacePage />,
 				children: [
 					{ index: true, path: 'chat', element: <Chat /> },
-					{ path: 'todo', element: <Todo /> }
+					{ path: 'todo', element: <Todo /> },
+					{ path: 'members', element: <MembersPage /> }
 				]
 			}
 		]

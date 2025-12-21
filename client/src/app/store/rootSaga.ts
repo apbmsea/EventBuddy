@@ -11,6 +11,7 @@ import { all } from 'typed-redux-saga';
 import { watchProject } from '@features/project';
 import { watchEditProject } from '@pages/SettingsPage/features/projectEdit';
 import { watchCreateProject } from '@pages/ProjectsPage/features/projectCreate';
+import { watchMembers } from '@pages/MembersPage/features/members';
 
 export default function* rootSaga() {
 	yield all([
@@ -25,6 +26,7 @@ export default function* rootSaga() {
 		watchProjects(),
 		watchEditProject(),
 		watchCreateProject(),
-		watchProject()
+		watchProject(),
+		watchMembers()
 	]);
 }
