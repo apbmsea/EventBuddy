@@ -20,7 +20,9 @@ export function* inviteMemberSaga(action: PayloadAction<InviteMemberPayload>) {
 	try {
 		const response = yield* call(inviteMember, action.payload);
 		yield* put(inviteMemberSuccess(response));
-		yield* put(getMembersRequest(action.payload.projectId));
+		yield* put(
+			getMembersRequest({ workspaceId: action.payload.projectId })
+		);
 		yield* put(closeModal());
 	} catch (error: unknown) {
 		yield* put(inviteMemberFailure());
@@ -32,7 +34,9 @@ export function* deleteMemberSaga(action: PayloadAction<InviteMemberPayload>) {
 	try {
 		const response = yield* call(deleteMember, action.payload);
 		yield* put(deleteMemberSuccess(response));
-		yield* put(getMembersRequest(action.payload.projectId));
+		yield* put(
+			getMembersRequest({ workspaceId: action.payload.projectId })
+		);
 	} catch (error: unknown) {
 		yield* put(deleteMemberFailure());
 		console.error('delete Member error:', error);
