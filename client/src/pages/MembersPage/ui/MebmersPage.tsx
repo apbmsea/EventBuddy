@@ -1,20 +1,10 @@
-import { openModal } from '@features/modal';
 import { MembersList } from '../features/members';
-import { useAppDispatch } from '@shared/hooks/store.hooks';
+import MembersToolbar from './MembersToolbar';
 
 const MebmersPage = () => {
-	const dispatch = useAppDispatch();
 	return (
 		<main>
-			<div>
-				<button
-					onClick={() => {
-						dispatch(openModal('userSearch'));
-					}}
-				>
-					Добавить юзера
-				</button>
-			</div>
+			<MembersToolbar />
 			<MembersList />
 		</main>
 	);

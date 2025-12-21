@@ -10,7 +10,7 @@ const MembersList = () => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		dispatch(getMembersRequest(workspaceId || ''));
+		dispatch(getMembersRequest({ workspaceId: workspaceId || '' }));
 	}, [dispatch, workspaceId]);
 
 	return (
