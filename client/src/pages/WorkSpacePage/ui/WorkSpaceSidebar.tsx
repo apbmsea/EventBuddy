@@ -2,8 +2,9 @@ import { useAppSelector } from '@shared/hooks/store.hooks';
 import { NavLink } from 'react-router-dom';
 
 const SIDEBAR_LINKS = [
-	{ id: 'chat', title: 'Chat', icon: '', path: 'chat' },
-	{ id: 'todo', title: 'Todo', icon: '', path: 'todo' }
+	{ id: 'chat', title: 'Чат', icon: '', path: 'chat' },
+	{ id: 'todo', title: 'Todo', icon: '', path: 'todo' },
+	{ id: 'members', title: 'Участники', icon: '', path: 'members' }
 ];
 
 const WorkSpaceSidebar = () => {
