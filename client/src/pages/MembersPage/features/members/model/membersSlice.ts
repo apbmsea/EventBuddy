@@ -1,21 +1,30 @@
-import type { Member } from '@pages/MembersPage/entities/member';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { Member } from '@pages/MembersPage/entities/member';
+
+export type SortType = 'name' | 'email' | 'accesses' | 'tag';
 
 interface MembersState {
 	members: Member[];
 	isLoading: boolean;
+	search: string;
+	sort: SortType;
 }
 
 const initialState: MembersState = {
 	members: [],
-	isLoading: false
+	isLoading: false,
+	search: '',
+	sort: 'name'
 };
 
 const membersSlice = createSlice({
 	name: 'members',
 	initialState,
 	reducers: {
-		getMembersRequest: (state, _action: PayloadAction<string>) => {
+		getMembersRequest: (
+			state,
+			_action: PayloadAction<{ workspaceId: string }>
+		) => {
 			state.isLoading = true;
 		},
 		getMembersSuccess: (state, action: PayloadAction<Member[]>) => {
@@ -24,10 +33,22 @@ const membersSlice = createSlice({
 		},
 		getMembersFailure: state => {
 			state.isLoading = false;
+		},
+		setSearch(state, action: PayloadAction<string>) {
+			state.search = action.payload;
+		},
+		setSort(state, action: PayloadAction<SortType>) {
+			state.sort = action.payload;
 		}
 	}
 });
 
-export const { getMembersRequest, getMembersSuccess, getMembersFailure } =
-	membersSlice.actions;
+export const {
+	getMembersRequest,
+	getMembersSuccess,
+	getMembersFailure,
+	setSearch,
+	setSort
+} = membersSlice.actions;
+
 export default membersSlice.reducer;
