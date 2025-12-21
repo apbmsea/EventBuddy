@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-type ModalType = 'settings' | 'projectCreate';
+type ModalType = 'settings' | 'projectCreate' | 'userSearch';
 
 interface ModalState {
 	isOpen: boolean;

@@ -4,3 +4,8 @@ export interface Member {
 	accesses: 'OWNER' | 'ADMIN' | 'MEMBER' | 'VISITOR' | 'INVITE';
 	tag?: string;
 }
+
+export interface InviteMemberPayload {
+	projectId: string;
+	email: string;
+}

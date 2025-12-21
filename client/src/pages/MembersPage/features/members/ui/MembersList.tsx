@@ -16,7 +16,7 @@ const MembersList = () => {
 	return (
 		<ul>
 			{members.map(member => (
-				<MemberCard member={member} />
+				<MemberCard key={member.email} member={member} />
 			))}
 		</ul>
 	);
