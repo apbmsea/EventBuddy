@@ -2,10 +2,14 @@ import { call, put, takeLatest } from 'typed-redux-saga';
 import {
 	inviteMemberRequest,
 	inviteMemberFailure,
-	inviteMemberSuccess
+	inviteMemberSuccess,
+	deleteMemberSuccess,
+	deleteMemberFailure,
+	deleteMemberRequest
 } from './memberSlice';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import {
+	deleteMember,
 	inviteMember,
 	type InviteMemberPayload
 } from '@pages/MembersPage/entities/member';
@@ -24,6 +28,18 @@ export function* inviteMemberSaga(action: PayloadAction<InviteMemberPayload>) {
 	}
 }
 
+export function* deleteMemberSaga(action: PayloadAction<InviteMemberPayload>) {
+	try {
+		const response = yield* call(deleteMember, action.payload);
+		yield* put(deleteMemberSuccess(response));
+		yield* put(getMembersRequest(action.payload.projectId));
+	} catch (error: unknown) {
+		yield* put(deleteMemberFailure());
+		console.error('delete Member error:', error);
+	}
+}
+
 export function* watchMember() {
 	yield* takeLatest(inviteMemberRequest.type, inviteMemberSaga);
+	yield* takeLatest(deleteMemberRequest.type, deleteMemberSaga);
 }

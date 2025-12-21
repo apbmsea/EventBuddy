@@ -24,10 +24,28 @@ const memberSlice = createSlice({
 		},
 		inviteMemberFailure: state => {
 			state.isLoading = false;
+		},
+		deleteMemberRequest: (
+			state,
+			_action: PayloadAction<InviteMemberPayload>
+		) => {
+			state.isLoading = true;
+		},
+		deleteMemberSuccess: state => {
+			state.isLoading = false;
+		},
+		deleteMemberFailure: state => {
+			state.isLoading = false;
 		}
 	}
 });
 
-export const { inviteMemberRequest, inviteMemberSuccess, inviteMemberFailure } =
-	memberSlice.actions;
+export const {
+	inviteMemberRequest,
+	inviteMemberSuccess,
+	inviteMemberFailure,
+	deleteMemberFailure,
+	deleteMemberRequest,
+	deleteMemberSuccess
+} = memberSlice.actions;
 export default memberSlice.reducer;
