@@ -1,3 +1,4 @@
+import { all } from 'typed-redux-saga';
 import { watchLogout } from '@features/logout';
 import { watchRefresh } from '@features/refresh';
 import { watchUser } from '@features/user/model/userSaga';
@@ -7,10 +8,12 @@ import { watchRecovery } from '@pages/RecoveryPage/ui/feature/recovery';
 import { watchRegistration } from '@pages/RegisterPage/ui/feature/registration';
 import { watchProfile } from '@pages/SettingsPage/features/profile';
 import { watchVerify } from '@pages/VerifyPage/ui/feature/verify';
-import { all } from 'typed-redux-saga';
 import { watchProject } from '@features/project';
 import { watchEditProject } from '@pages/SettingsPage/features/projectEdit';
 import { watchCreateProject } from '@pages/ProjectsPage/features/projectCreate';
+import { watchMembers } from '@pages/MembersPage/features/members';
+import { watchUserSearch } from '@pages/MembersPage/features/userSearch';
+import { watchMember } from '@pages/MembersPage/features/member';
 
 export default function* rootSaga() {
 	yield all([
@@ -25,6 +28,9 @@ export default function* rootSaga() {
 		watchProjects(),
 		watchEditProject(),
 		watchCreateProject(),
-		watchProject()
+		watchProject(),
+		watchMember(),
+		watchMembers(),
+		watchUserSearch()
 	]);
 }

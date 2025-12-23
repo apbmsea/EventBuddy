@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import { Settings } from '@pages/SettingsPage';
 import { ProjectCreateForm } from '@pages/ProjectsPage/features/projectCreate';
 import { closeModal } from '../model/modalSlice';
+import { UserSearchModal } from '@pages/MembersPage/features/userSearch';
 
 const overlayStyle: React.CSSProperties = {
 	position: 'fixed',
@@ -43,6 +44,7 @@ const Modal = () => {
 			<div style={contentStyle} onClick={e => e.stopPropagation()}>
 				{type === 'settings' && <Settings />}
 				{type === 'projectCreate' && <ProjectCreateForm />}
+				{type === 'userSearch' && <UserSearchModal />}
 			</div>
 		</div>,
 		document.body
