@@ -7,16 +7,22 @@ import type {
 	WSOutgoingMessage
 } from '@shared/websocket/websocket.types';
 import type { User } from '@shared/types/user.type';
-import type { ConnectedUser } from './workSpaceSlice';
+import type { ConnectedMember } from './workSpaceSlice';
 
-function* workspaceSaga(workspaceId: string, user: User) {
-	const safeUser: Omit<ConnectedUser, 'connections'> = {
+import { setWorkspaceInfo } from './workSpaceSlice';
+import type { Member } from '@pages/MembersPage/entities/member';
+
+function* workspaceSaga(workspaceId: string, user: User & Partial<Member>) {
+	const safeUser: ConnectedMember = {
 		id: user.id,
 		name: user.name,
 		email: user.email,
 		role: user.role,
 		avatarUrl: user.avatarUrl,
-		page: null
+		page: null,
+		connections: 0,
+		accesses: user.accesses ?? 'OWNER',
+		tag: user.tag ?? ''
 	};
 
 	yield* call(
@@ -26,6 +32,8 @@ function* workspaceSaga(workspaceId: string, user: User) {
 
 	const joinMessage: WSOutgoingMessage = { type: 'join', user: safeUser };
 	yield* call([wsClient, wsClient.send], joinMessage);
+
+	yield* put(setWorkspaceInfo({ me: safeUser, projectId: workspaceId }));
 
 	const channel = yield* call(createWSChannel);
 
