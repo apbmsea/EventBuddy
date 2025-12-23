@@ -1,4 +1,8 @@
-import type { InviteMemberPayload } from '@pages/MembersPage/entities/member';
+import type {
+	InviteMemberPayload,
+	DeleteMemberPayload,
+	UpdateMemberPayload
+} from '@pages/MembersPage/entities/member';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface MemberState {
@@ -25,9 +29,21 @@ const memberSlice = createSlice({
 		inviteMemberFailure: state => {
 			state.isLoading = false;
 		},
+		updateMemberRequest: (
+			state,
+			_action: PayloadAction<UpdateMemberPayload>
+		) => {
+			state.isLoading = true;
+		},
+		updateMemberSuccess: state => {
+			state.isLoading = false;
+		},
+		updateMemberFailure: state => {
+			state.isLoading = false;
+		},
 		deleteMemberRequest: (
 			state,
-			_action: PayloadAction<InviteMemberPayload>
+			_action: PayloadAction<DeleteMemberPayload>
 		) => {
 			state.isLoading = true;
 		},
@@ -44,8 +60,13 @@ export const {
 	inviteMemberRequest,
 	inviteMemberSuccess,
 	inviteMemberFailure,
-	deleteMemberFailure,
+
+	updateMemberRequest,
+	updateMemberSuccess,
+	updateMemberFailure,
+
 	deleteMemberRequest,
-	deleteMemberSuccess
+	deleteMemberSuccess,
+	deleteMemberFailure
 } = memberSlice.actions;
 export default memberSlice.reducer;
