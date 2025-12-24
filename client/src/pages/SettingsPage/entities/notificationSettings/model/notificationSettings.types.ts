@@ -3,4 +3,5 @@ export interface NotificationSettingPaload {
 	autoClear: boolean;
 	view: string;
 	duration: number;
+	maxVisible?: number;
 }

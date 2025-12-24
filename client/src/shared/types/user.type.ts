@@ -14,6 +14,7 @@ export interface User {
 				view: 'TOP' | 'BOTTOM';
 				duration: number;
 				autoClear: boolean;
+				maxVisible: number;
 			};
 		};
 	};
