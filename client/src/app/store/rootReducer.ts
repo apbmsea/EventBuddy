@@ -16,6 +16,7 @@ import { modalReducer } from '@features/modal';
 import { workspaceReducer } from '@pages/WorkSpacePage';
 import { membersReducer } from '@pages/MembersPage/features/members';
 import { userSearchReducer } from '@pages/MembersPage/features/userSearch';
+import { notificationSettingsReducer } from '@pages/SettingsPage/features/notificationSettings';
 
 const rootReducer = combineReducers({
 	user: userReducer,
@@ -26,15 +27,21 @@ const rootReducer = combineReducers({
 	refresh: refreshReducer,
 	logout: logoutReducer,
 	profile: profileReducer,
+
 	projects: projectsReducer,
 	project: projectReducer,
 	projectCreate: projectCreateReducer,
 	projectEdit: projectEditReducer,
+
 	settings: settingsReducer,
+	notificationSetting: notificationSettingsReducer,
+
 	modal: modalReducer,
 	workspace: workspaceReducer,
+
 	member: membersReducer,
 	members: membersReducer,
+
 	userSearch: userSearchReducer
 });
 

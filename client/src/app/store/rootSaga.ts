@@ -14,6 +14,7 @@ import { watchCreateProject } from '@pages/ProjectsPage/features/projectCreate';
 import { watchMembers } from '@pages/MembersPage/features/members';
 import { watchUserSearch } from '@pages/MembersPage/features/userSearch';
 import { watchMember } from '@pages/MembersPage/features/member';
+import { watchNotificationSettings } from '@pages/SettingsPage/features/notificationSettings';
 
 export default function* rootSaga() {
 	yield all([
@@ -28,6 +29,7 @@ export default function* rootSaga() {
 		watchProjects(),
 		watchEditProject(),
 		watchCreateProject(),
+		watchNotificationSettings(),
 		watchProject(),
 		watchMember(),
 		watchMembers(),

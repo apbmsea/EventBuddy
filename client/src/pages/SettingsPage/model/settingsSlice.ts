@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-export type SettingsTab = 'profile' | 'projects' | 'project';
+export type SettingsTab = 'profile' | 'projects' | 'project' | 'notification';
 
 interface SettingsState {
 	tab: SettingsTab;
