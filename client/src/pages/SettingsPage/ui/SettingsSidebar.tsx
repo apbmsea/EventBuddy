@@ -30,6 +30,13 @@ const SettingsSidebar = () => {
 					>
 						Проекты
 					</button>
+
+					<button
+						onClick={() => dispatch(setTab('notification'))}
+						disabled={tab === 'notification'}
+					>
+						Уведомления
+					</button>
 				</ul>
 
 				<button onClick={() => dispatch(logoutRequest())}>Выйти</button>

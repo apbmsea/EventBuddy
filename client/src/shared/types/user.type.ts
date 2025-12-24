@@ -7,4 +7,14 @@ export interface User {
 	name: string;
 	avatarUrl?: string;
 	role: Role;
+	settings?: {
+		notifications: {
+			system: {
+				enabled: boolean;
+				view: 'TOP' | 'BOTTOM';
+				duration: number;
+				autoClear: boolean;
+			};
+		};
+	};
 }

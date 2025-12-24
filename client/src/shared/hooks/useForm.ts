@@ -6,6 +6,8 @@ interface SliceState {
 	errors?: Record<string, string>;
 }
 
+type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useForm = <T extends Record<string, any>>(
 	initialValues: T,
@@ -26,12 +28,17 @@ export const useForm = <T extends Record<string, any>>(
 		dispatch({ type: `${sliceName}/clearAllErrors` });
 	}, [dispatch, sliceName]);
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { name, value, type, checked } = e.target;
+	const handleChange = (e: React.ChangeEvent<FormElement>) => {
+		const { name, value, type } = e.target;
+
+		const newValue =
+			type === 'checkbox'
+				? (e.target as HTMLInputElement).checked
+				: value;
 
 		setValues(prev => ({
 			...prev,
-			[name]: type === 'checkbox' ? checked : value
+			[name]: newValue
 		}));
 
 		const hasLocalError = fieldErrors[name as keyof T];
@@ -45,7 +52,10 @@ export const useForm = <T extends Record<string, any>>(
 		}
 
 		if (hasStoreError) {
-			dispatch({ type: `${sliceName}/clearFieldError`, payload: name });
+			dispatch({
+				type: `${sliceName}/clearFieldError`,
+				payload: name
+			});
 		}
 	};
 

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@shared/hooks/store.hooks';
 import { ProjectEditForm } from '../features/projectEdit';
 import { setView } from '@features/projects/model/projectsSlice';
 import { setTab } from '../model/settingsSlice';
+import { NotificationSetting } from '../features/notificationSettings';
 
 const SettingsContent = () => {
 	const { tab, projectId } = useAppSelector(state => state.settings);
@@ -17,6 +18,7 @@ const SettingsContent = () => {
 				<ProfileForm />
 			</div>
 		);
+
 	if (tab === 'projects') {
 		dispatch(setView('settings'));
 		return (
@@ -39,6 +41,15 @@ const SettingsContent = () => {
 				<ProjectEditForm />;
 			</div>
 		);
+
+	if (tab === 'notification') {
+		return (
+			<div>
+				<h2>Уведомления</h2>
+				<NotificationSetting />
+			</div>
+		);
+	}
 };
 
 export default SettingsContent;
