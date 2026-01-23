@@ -17,9 +17,16 @@ const RegistrationForm: React.FC = () => {
 		},
 		'registration'
 	);
+
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		dispatch(registrationRequest(values));
+
+		dispatch(
+			registrationRequest({
+				...values,
+				role: values.role === 'Для себя' ? 'INDIVIDUAL' : 'COMPANY'
+			})
+		);
 	};
 
 	return (

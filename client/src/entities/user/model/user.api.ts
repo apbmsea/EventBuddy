@@ -1,7 +1,7 @@
 import { $api } from '@shared/api/instance';
 
 export async function getUser() {
-	const response = await $api.post('/users/me');
+	const response = await $api.get('/users/me');
 	return response.data;
 }
 

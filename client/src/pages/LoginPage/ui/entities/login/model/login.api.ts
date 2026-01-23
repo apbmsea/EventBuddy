@@ -4,7 +4,7 @@ import type { LoginPayload } from '../model/login.types';
 export async function login(data: LoginPayload) {
 	if (data.token) {
 		const response = await $api.post(
-			'/auto-login',
+			'/auth/auto-login',
 			{ email: '', password: '' },
 			{
 				params: {

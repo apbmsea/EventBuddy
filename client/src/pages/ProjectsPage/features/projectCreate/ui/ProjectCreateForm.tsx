@@ -17,7 +17,13 @@ const ProjectCreateForm: React.FC = () => {
 	);
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		dispatch(projectCreateRequest(values));
+
+		dispatch(
+			projectCreateRequest({
+				...values,
+				deadline: new Date(values.deadline).toISOString()
+			})
+		);
 	};
 
 	return (

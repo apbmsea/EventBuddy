@@ -7,10 +7,25 @@ import { navigateTo } from '@shared/utils/navigate';
 
 export const $api = axios.create({
 	baseURL: import.meta.env.VITE_SERVER_URL || 'http://localhost:8080',
-	timeout: 10000
+	timeout: 10000,
+	withCredentials: true
+});
+
+export const $refresh = axios.create({
+	baseURL: import.meta.env.VITE_SERVER_URL || 'http://localhost:8080',
+	timeout: 10000,
+	withCredentials: true
 });
 
 $api.interceptors.request.use(config => {
+	const token = localStorage.getItem('accessToken');
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`;
+	}
+	return config;
+});
+
+$refresh.interceptors.request.use(config => {
 	const token = localStorage.getItem('accessToken');
 	if (token) {
 		config.headers.Authorization = `Bearer ${token}`;

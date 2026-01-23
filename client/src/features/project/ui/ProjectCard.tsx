@@ -28,7 +28,7 @@ const ProjectCard = ({ project }: ProjectCardPayload) => {
 		<li key={project.id}>
 			<h1 onClick={handleNavigate}>{project.title}</h1>{' '}
 			{project.description} {project.deadline} {project.updatedAt}{' '}
-			<img src={project.owner.avatarUrl} alt='' />
+			{/* <img src={project.owner.avatarUrl} alt='' /> */}
 			<Popover trigger={<button>...</button>}>
 				<button
 					onClick={() => {

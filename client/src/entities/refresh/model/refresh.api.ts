@@ -1,6 +1,6 @@
-import { $api } from '@shared/api/instance';
+import { $refresh } from '@shared/api/instance';
 
 export async function refresh() {
-	const response = await $api.post('/auth/refresh');
+	const response = await $refresh.post('/auth/refresh');
 	return response.data;
 }
